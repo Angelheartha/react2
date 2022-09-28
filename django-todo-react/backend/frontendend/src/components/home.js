@@ -5,17 +5,19 @@ import Signup from "./signup";
 const Home = (props) =>{
 
 
-const handleLogin = (data) =>{
+  const handleLogin = (data) =>{
      props.setLoggedInStatus("ログインなう")
-     props.setUser(data)
+     props.setUser(data.user)
+     console.log("miss")
   }
+
 
 
 
 const handleSuccessfulAuthentication = (data) =>{
         navigate("/Dashboard");
         props.handleLogin(data);
-        console.log("miss")
+
 
    }
 

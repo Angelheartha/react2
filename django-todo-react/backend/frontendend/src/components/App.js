@@ -45,6 +45,7 @@ const App = () => {
   const handleLogin = (data) =>{
      setLoggedInStatus("ログインなう")
      setUser(data.user)
+     console.log("miss")
   }
 
 
