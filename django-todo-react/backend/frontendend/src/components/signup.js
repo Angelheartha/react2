@@ -17,6 +17,7 @@ const Signup = (props) => {
 const handleSuccessfulAuthentication = (data) =>{
         navigate("/Dashboard");
         props.handleLogin(data);
+        props.setUser(data)
         console.log("miss")
    }
 
