@@ -31,8 +31,6 @@ const App = () => {
 
 
 
-
-
   const location = useLocation();
 
   useEffect(()=>{
@@ -44,17 +42,10 @@ const App = () => {
 
 
 
-  useEffect(() =>{
-   const list = () => {
-   if(localStorage.localJWT){
-   todoList();
-
-   }
-   }
-   console.log('hey')
-   list();
-  },[Login])
-
+  const handleLogin = (data) =>{
+     setLoggedInStatus("ログインなう")
+     setUser(data.user)
+  }
 
 
 
@@ -355,19 +346,19 @@ const Act = (props) => {
                     <h1 className="message">You are always welcome!</h1>
 
                      <Routes>
-                        <Route exact path={"/login/"} element={<Login />}/>
                         <Route exact path={"/signup/"} element={<Signup />}/>
+
                         <Route
                           exact path={"/"}
                           element={
-                          <Home loggedInStatus={loggedInStatus} />
+                          <Home handleLogin={handleLogin} loggedInStatus={loggedInStatus} />
                           }
                           />
 
                         <Route
                           exact path={"/Dashboard/"}
                           element={
-                          <Dashboard loggedInStatus={loggedInStatus} />
+                          <Dashboard  loggedInStatus={loggedInStatus} />
                           }
                           />
 

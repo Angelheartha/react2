@@ -34,7 +34,7 @@ const handleSuccessfulAuthentication = (data) =>{
             ).then(response=>{
                if(response.statusText === 'Created'){
                handleSuccessfulAuthentication(response.data)
-
+               console.log("miss")
                }
 
             }).catch (error =>{
