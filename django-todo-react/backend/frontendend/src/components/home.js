@@ -6,12 +6,12 @@ const Home = (props) =>{
 
 
 
-const handleSuccessfulAuthentication = (data) =>{
-        navigate("/Dashboard");
-        props.handleLogin(data);
+//const handleSuccessfulAuthentication = (data) =>{
+//        navigate("/Dashboard");
+ //       props.handleLogin(data);
 
 
-   }
+//   }
 
 
 

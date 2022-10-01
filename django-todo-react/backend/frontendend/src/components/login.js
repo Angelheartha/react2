@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import axios from 'axios'
 import axiosInstance from "../axiosApi";
+import { useNavigate } from "react-router-dom";
 
 // Login関数コンポーネントへ書き換え
 export default function Login(props) {
@@ -8,6 +9,15 @@ export default function Login(props) {
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
     const[username, setUsername] = useState("")
+    const navigate = useNavigate()
+
+
+const handleSuccessfulAuthentication = (data) =>{
+        navigate("/Dashboard");
+        props.handleLogin()
+  }
+
+
     const handleSubmit = (event) => {
         // 通信先のURLを/loginに書き換え
                 axiosInstance.post("/token/obtain/",
@@ -20,10 +30,12 @@ export default function Login(props) {
             },
             { withCredentials: true }
         ).then(response => {
-            //if (response.statusText === 'Created') {
-            //    props.handleSuccessfulAuthentication(response.data)
-            //}
-            console.log("login response: ", response)
+            //props.handleLogin()//
+            console.log(response.headers)
+            if (response.statusText=== "OK") {
+                 handleSuccessfulAuthentication(response.data)
+                 console.log(response)
+            }
         }).catch(error => {
             console.log("registration error", error)
         })

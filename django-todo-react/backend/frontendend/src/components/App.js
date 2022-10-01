@@ -33,21 +33,45 @@ const App = () => {
 
   const location = useLocation();
 
+
   useEffect(()=>{
   refreshList();
-
+  checkLoginStatus()
 
   },[])
 
 
 
+    //useEffect(() => {
+   // checkLoginStatus()
+ // })
+
+  // 追加
+  const checkLoginStatus = () => {
+    axios.get("/access-control-allow-credentials/", { withCredentials: true })
+      .then(response => {
+      console.log("ログイン状況", response)
+    }).catch(error => {
+      console.log("ログインエラー", error)
+    })
+  }
+
 
   const handleLogin = () =>{
      setLoggedInStatus("ログインなう")
      //setUser(data.user)//
-     console.log('miss')
+
   }
 
+
+
+
+  const handleSuccessfulAuthentication = () =>{
+        console.log('miss')
+        navigate("/Dashboard");
+        handleLogin();
+
+   }
 
 
 
@@ -349,7 +373,8 @@ const Act = (props) => {
                      <Routes>
                         <Route exact path={"/login/"}
                         element={
-                        <Login/>
+                        //<Login/>
+                        <Login handleSuccessfulAuthentication={handleSuccessfulAuthentication} handleLogin={handleLogin}/>
                         }
                         />
 
