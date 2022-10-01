@@ -26,7 +26,7 @@ const App = () => {
   const [input, setInput]=useState("");
   const [textarea, setTextarea]=useState("");
   const [loggedInStatus, setLoggedInStatus]=useState("未ログイン");
-  const [user, setUser]=useState({});
+  //const [user, setUser]=useState({});//
 
 
 
@@ -42,10 +42,10 @@ const App = () => {
 
 
 
-  const handleLogin = (data) =>{
+  const handleLogin = () =>{
      setLoggedInStatus("ログインなう")
-     setUser(data.user)
-     console.log("miss")
+     //setUser(data.user)//
+     console.log('miss')
   }
 
 
@@ -347,7 +347,11 @@ const Act = (props) => {
                     <h1 className="message">You are always welcome!</h1>
 
                      <Routes>
-                        <Route exact path={"/signup/"} element={<Signup />}/>
+                        <Route exact path={"/signup/"}
+                        element={
+                        <Signup handleLogin={handleLogin}/>
+                        }
+                        />
 
                         <Route
                           exact path={"/"}

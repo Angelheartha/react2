@@ -16,8 +16,8 @@ const Signup = (props) => {
 
 const handleSuccessfulAuthentication = (data) =>{
         navigate("/Dashboard");
-        props.handleLogin(data);
-        console.log("miss")
+        //props.handleLogin()//
+
 
    }
 
@@ -33,9 +33,10 @@ const handleSuccessfulAuthentication = (data) =>{
             },
             {withCredentials:true}
             ).then(response=>{
+               props.handleLogin()
                if(response.statusText === 'Created'){
                handleSuccessfulAuthentication(response.data)
-               console.log("miss")
+
                }
 
             }).catch (error =>{
