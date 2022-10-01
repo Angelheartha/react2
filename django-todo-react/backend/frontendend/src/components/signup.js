@@ -36,7 +36,6 @@ const handleSuccessfulAuthentication = (data) =>{
                props.handleLogin()
                if(response.statusText === 'Created'){
                handleSuccessfulAuthentication(response.data)
-
                }
 
             }).catch (error =>{

@@ -1,88 +1,67 @@
-import React, { Component } from "react";
+import React, { useState } from 'react'
+import axios from 'axios'
 import axiosInstance from "../axiosApi";
 
-class Login extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {username: "", password: "", email:""};
+// Login関数コンポーネントへ書き換え
+export default function Login(props) {
+    // password_confirmationフィールドを削除
+    const [email, setEmail] = useState("")
+    const [password, setPassword] = useState("")
+    const[username, setUsername] = useState("")
+    const handleSubmit = (event) => {
+        // 通信先のURLを/loginに書き換え
+                axiosInstance.post("/token/obtain/",
+            {
+                // ここのpassword_confirmationフィールドも削除
+                    username: username,
+                    email: email,
+                    password: password,
 
-        this.handleChange = this.handleChange.bind(this);
-        this.handleSubmit = this.handleSubmit.bind(this);
-        this.handleSubmitWThen = this.handleSubmitWThen.bind(this);
-    }
-
-    handleChange(event) {
-        this.setState({[event.target.name]: event.target.value});
-    }
-
-
-   addNumbers(num1, num2){
-  console.log(num1, num2); //ここに1行追加
-  console.log(num1 + num2); //この行は先ほどのまま
-  return num1 + num2;
-}
-
-
-
-
-    handleSubmitWThen(event){
-        event.preventDefault();
-        axiosInstance.post('/token/obtain/', {
-                username: this.state.username,
-                password: this.state.password,
-                email:this.state.email,
-            }).then(
-                result => {
-                    axiosInstance.defaults.headers['Authorization'] = "JWT " + result.data.access;
-                    localStorage.setItem('access_token', result.data.access);
-                    localStorage.setItem('refresh_token', result.data.refresh);
-                }
-        ).catch (error => {
-            throw error;
-            addNumbers(2);
-
+            },
+            { withCredentials: true }
+        ).then(response => {
+            //if (response.statusText === 'Created') {
+            //    props.handleSuccessfulAuthentication(response.data)
+            //}
+            console.log("login response: ", response)
+        }).catch(error => {
+            console.log("registration error", error)
         })
+        event.preventDefault()
     }
 
-    async handleSubmit(event) {
-        event.preventDefault();
-        try {
-            const response = await axiosInstance.post('/token/obtain/', {
-                username: this.state.username,
-                password: this.state.password,
-                email:this.state.email,
-            });
-            axiosInstance.defaults.headers['Authorization'] = "JWT " + response.data.access;
-            localStorage.setItem('access_token', response.data.access);
-            localStorage.setItem('refresh_token', response.data.refresh);
-            return response;
-        } catch (error) {
-            throw error;
-            addNumbers(2);
+    return (
+        <div>
+            {/* ログインに変更 */}
+            <p>ログイン</p>
 
-        }
-    }
+            {/* フォーム内のpassword_confrmation入力フィールド削除 */}
+            <form onSubmit={handleSubmit}>
+                <input
+                    type="email"
+                    name="email"
+                    placeholder="メールアドレス"
+                    value={email}
+                    onChange={event => setEmail(event.target.value)}
+                />
+                <input
+                    type="password"
+                    name="password"
+                    placeholder="パスワード"
+                    value={password}
+                    onChange={event => setPassword(event.target.value)}
+                />
+                <input
+                    type="username"
+                    name="username"
+                    placeholder="ユーザー名"
+                    value={username}
+                    onChange={event => setUsername(event.target.value)}
+                />
 
-    render() {
-        return (
-            <div>
-                <form className="form" onSubmit={this.handleSubmit}>
-                    <label>
-                        Username:
-                        <input className="label" name="username" type="text" value={this.state.username} onChange={this.handleChange}/>
-                    </label>
-                    <label>
-                        Password:
-                        <input className="label" name="password" type="password" value={this.state.password} onChange={this.handleChange}/>
-                    </label>
-                    <label>
-                        email:
-                        <input className="label" name="email" type="email" value={this.state.email} onChange={this.handleChange}/>
-                    </label>
-                    <input type="submit" value="Submit"/>
-                </form>
-            </div>
-        )
-    }
+                <button type="submit">ログイン</button>
+            </form>
+        </div>
+    )
 }
-export default Login;
+

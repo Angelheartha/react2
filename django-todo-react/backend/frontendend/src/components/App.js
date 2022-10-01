@@ -347,6 +347,12 @@ const Act = (props) => {
                     <h1 className="message">You are always welcome!</h1>
 
                      <Routes>
+                        <Route exact path={"/login/"}
+                        element={
+                        <Login/>
+                        }
+                        />
+
                         <Route exact path={"/signup/"}
                         element={
                         <Signup handleLogin={handleLogin}/>
