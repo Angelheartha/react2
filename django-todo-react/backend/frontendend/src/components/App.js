@@ -48,7 +48,7 @@ const App = () => {
 
   // 追加
   const checkLoginStatus = () => {
-    axios.get("/access-control-allow-credentials/", { withCredentials: true })
+    axiosInstance.get("/access-control-allow-credentials/", { withCredentials: true })
       .then(response => {
       console.log("ログイン状況", response)
     }).catch(error => {
