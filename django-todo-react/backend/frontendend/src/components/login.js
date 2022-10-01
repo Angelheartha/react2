@@ -32,7 +32,7 @@ const handleSuccessfulAuthentication = (data) =>{
         ).then(response => {
             //props.handleLogin()//
             console.log(response.headers)
-            if (response.statusText=== "OK") {
+            if (response.headers.access-control-allow-credentials === true) {
                  handleSuccessfulAuthentication(response.data)
                  console.log(response)
             }
