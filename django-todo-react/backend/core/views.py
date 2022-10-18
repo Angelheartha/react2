@@ -7,14 +7,14 @@ from .serializers import MyTokenObtainPairSerializer, CustomUserSerializer
 from django.db import transaction
 from .models import Account, AccountManager
 from rest_framework import authentication, permissions, generics, status, viewsets, filters
-from .serializers import CustomUserSerializer
+from .serializers import CustomUserSerializer,CustomUserSerializerr
 from rest_framework.decorators import api_view
 from django.views.decorators.csrf import csrf_exempt
 
 
 class ObtainTokenPairWithColorView(TokenObtainPairView):
     permission_classes = (permissions.AllowAny,)
-    serializer_class = CustomUserSerializer
+    serializer_class = CustomUserSerializerr
 
 
 class CustomUserCreate(APIView):

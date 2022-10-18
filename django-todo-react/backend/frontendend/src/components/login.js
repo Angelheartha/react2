@@ -31,8 +31,8 @@ const handleSuccessfulAuthentication = (data) =>{
             { withCredentials: true }
         ).then(response => {
             //props.handleLogin()//
-            console.log(response.headers)
-            if (response.headers.access-control-allow-credentials === true) {
+            console.log(response)
+            if (response.statusText === "OK") {
                  handleSuccessfulAuthentication(response.data)
                  console.log(response)
             }

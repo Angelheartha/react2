@@ -2,6 +2,8 @@ from django.urls import path
 from rest_framework_simplejwt import views as jwt_views
 from .views import ObtainTokenPairWithColorView, AuthInfoGetView ,CustomUserCreate, HelloWorldView, LogoutAndBlacklistRefreshTokenForUserView
 
+
+
 urlpatterns = [
     path('user/create/', CustomUserCreate.as_view(), name="create_user"),
     path('user/mypage/', AuthInfoGetView.as_view()),
