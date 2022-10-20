@@ -36,8 +36,8 @@ const App = () => {
 
   useEffect(()=>{
   refreshList();
-  checkLoginStatus()
-  checkLoginStatus()
+  checkLoginStatus();
+  checkLoginStatus();
   },[])
 
 
@@ -428,7 +428,18 @@ const Act = (props) => {
                      </Routes>
 
                  </div>
+
+
             </div>
+
+
+
+
+
+
+
+
+
 
         );
 }
