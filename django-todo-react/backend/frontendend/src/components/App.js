@@ -42,19 +42,42 @@ const App = () => {
 
 
 
-    //useEffect(() => {
-   // checkLoginStatus()
- // })
+    useEffect(() => {
+   checkLoginStatus()
+  })
 
-  // 追加
-  const checkLoginStatus = () => {
-    axiosInstance.get("/access-control-allow-credentials/", { withCredentials: true })
+
+//const checkLoginStatus = () => {
+//    axiosInstance.get("/refresh" , { withCredentials: true })
+//      .then(response => {
+//      console.log("ログイン状況", response)
+//    }).catch(error => {
+//      console.log("ログインエラー", error)
+//    })
+//  }
+
+
+
+const checkLoginStatus = () => {
+   axiosInstance.get("/refresh" , { withCredentials: true })
       .then(response => {
-      console.log("ログイン状況", response)
-    }).catch(error => {
-      console.log("ログインエラー", error)
+        if (response.data.refresh　&& loggedInStatus === "未ログイン") {
+          setLoggedInStatus("ログインなう")
+          console.log("loo")
+          //setUser(response.data.user)
+        }else if (!response.data.refresh　&& loggedInStatus === "ログインなう") {
+          console.log("lo")
+          setLoggedInStatus("未ログイン")
+          //setUser({})
+        }
+      })
+      .catch(error => {
+        console.log("ログインエラー", error)
     })
-  }
+}
+
+
+
 
 
   const handleLogin = () =>{
