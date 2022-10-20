@@ -32,7 +32,8 @@ const handleSuccessfulAuthentication = (data) =>{
         ).then(response => {
             //props.handleLogin()//
             //console.log(response)//
-            if (response.data.refresh) {
+            console.log(response)
+            if (response.statusText === "OK") {
                  handleSuccessfulAuthentication(response.data)
                  console.log(response)
             }

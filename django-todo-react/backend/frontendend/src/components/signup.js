@@ -34,7 +34,7 @@ const handleSuccessfulAuthentication = (data) =>{
             {withCredentials:true}
             ).then(response=>{
                props.handleLogin()
-               if(response.data.refresh){
+               if(response.statusText === 'Created'){
                handleSuccessfulAuthentication(response.data)
                }
 
