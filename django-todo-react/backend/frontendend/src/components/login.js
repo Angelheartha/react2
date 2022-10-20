@@ -8,7 +8,7 @@ export default function Login(props) {
     // password_confirmationフィールドを削除
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
-    const[username, setUsername] = useState("")
+    const [username, setUsername] = useState("")
     const navigate = useNavigate()
 
 

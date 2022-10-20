@@ -37,24 +37,16 @@ const App = () => {
   useEffect(()=>{
   refreshList();
   checkLoginStatus()
-
+  checkLoginStatus()
   },[])
 
 
 
-    useEffect(() => {
-   checkLoginStatus()
-  })
+   // useEffect(() => {
+   //checkLoginStatus()
+  //})
 
 
-//const checkLoginStatus = () => {
-//    axiosInstance.get("/refresh" , { withCredentials: true })
-//      .then(response => {
-//      console.log("ログイン状況", response)
-//    }).catch(error => {
-//      console.log("ログインエラー", error)
-//    })
-//  }
 
 
 
@@ -76,6 +68,11 @@ const checkLoginStatus = () => {
     })
 }
 
+
+const handleLogout = () => {
+    setLoggedInStatus("未ログイン")
+    //setUser({})
+  }
 
 
 
@@ -362,20 +359,20 @@ const Act = (props) => {
 
 
 
-    const handleLogout = async () => {
-        try {
-            const response = await axiosInstance.post('/blacklist/', {
-                "refresh_token": localStorage.getItem("refresh_token")
-            });
-            localStorage.removeItem('access_token');
-            localStorage.removeItem('refresh_token');
-            axiosInstance.defaults.headers['Authorization'] = null;
-            return response;
-        }
-        catch (e) {
-            console.log(e);
-        }
-    };
+    //const handleLogout = async () => {
+    //    try {
+    //        const response = await axiosInstance.post('/blacklist/', {
+    //            "refresh_token": localStorage.getItem("refresh_token")
+    //        });
+    //        localStorage.removeItem('access_token');
+    //        localStorage.removeItem('refresh_token');
+    //        axiosInstance.defaults.headers['Authorization'] = null;
+    //        return response;
+    //    }
+    //    catch (e) {
+    //        console.log(e);
+    //    }
+    //};
 
 
         return (
@@ -407,12 +404,17 @@ const Act = (props) => {
                         }
                         />
 
+
+
+
                         <Route
                           exact path={"/"}
                           element={
-                          <Home handleLogin={handleLogin} loggedInStatus={loggedInStatus} />
+                          <Home handleLogin={handleLogin} handleLogout={handleLogout} loggedInStatus={loggedInStatus} />
                           }
                           />
+
+
 
                         <Route
                           exact path={"/Dashboard/"}
@@ -420,6 +422,7 @@ const Act = (props) => {
                           <Dashboard  loggedInStatus={loggedInStatus} />
                           }
                           />
+
 
 
                      </Routes>
