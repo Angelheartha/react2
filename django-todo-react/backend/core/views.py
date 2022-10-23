@@ -1,6 +1,6 @@
 
 from rest_framework.response import Response
-from rest_framework_simplejwt.views import TokenObtainPairView
+from rest_framework_simplejwt.views import TokenObtainPairView, TokenRefreshView
 from rest_framework.views import APIView
 from rest_framework_simplejwt.tokens import RefreshToken
 from .serializers import MyTokenObtainPairSerializer, CustomUserSerializer
@@ -13,6 +13,11 @@ from django.views.decorators.csrf import csrf_exempt
 
 
 class ObtainTokenPairWithColorView(TokenObtainPairView):
+    permission_classes = (permissions.AllowAny,)
+    serializer_class = CustomUserSerializerr
+
+
+class RefreshTokenPairWithColorView(TokenRefreshView):
     permission_classes = (permissions.AllowAny,)
     serializer_class = CustomUserSerializerr
 

@@ -45,7 +45,10 @@ margin:0 auto;
 
 
 
-
+.formtext textarea{
+width:230px;
+height:7em;
+}
 
 
 
@@ -111,6 +114,12 @@ text-align:center;
   justify-content:center;
 
 }
+
+.form .button[type=submit]{
+width:100%;
+
+}
+
 
 
 

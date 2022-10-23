@@ -51,15 +51,15 @@ const App = () => {
 
 
 const checkLoginStatus = () => {
-   axiosInstance.get("core/token/refresh" , { withCredentials: true })
+   axiosInstance.post("/token/refresh/" , { withCredentials: true })
       .then(response => {
-        if (response.statusText　&& loggedInStatus === "未ログイン") {
-          setLoggedInStatus("ログインなう")
+        if (response.data.refresh　&& loggedInStatus === "未ログイン") {
           console.log("looo")
+          setLoggedInStatus("ログインなう")
           //setUser(response.data.user)
-        }else if (!response.statusText　&& loggedInStatus === "ログインなう") {
+        }else if (!response.data.refresh　&& loggedInStatus === "ログインなう") {
           console.log("lool")
-          setLoggedInStatus("未ログイン")
+          setLoggedInStatus("ログインなう")
           //setUser({})
         }
       })

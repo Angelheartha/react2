@@ -74,7 +74,7 @@ const handleSuccessfulAuthentication = (data) =>{
                        onChange={event => setUsername(event.target.value)}
                     />
 
-                   <button type="submit">Signup</button>
+                   <button className="button" type="submit">Signup</button>
                 </form>
             </div>
         )

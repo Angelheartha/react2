@@ -184,7 +184,7 @@ const handleSubmit = (item, props) => {
      <div id="overlay">
          <div id="modal" className="modall">
       <div>
-        <form onSubmit={()=>{this.handleSubmit()}} >
+        <form className="formtext" onSubmit={()=>{this.handleSubmit()}} >
           <p>E-mail</p>
           <input />
           <p>Message</p>
