@@ -1,6 +1,6 @@
 import { Component} from "react";
 import React, { useEffect, useReducer } from 'react'
-import { BrowserRouter, Router, Route, Routes, Link, useLocation} from "react-router-dom";
+import { BrowserRouter, Router, Route, Routes, Link} from "react-router-dom";
 import Login from "./login";
 import Signup from "./signup";
 import Home from "./home";
@@ -33,6 +33,9 @@ const App = () => {
   //const [user, setUser]=useState({});//
 
 
+
+
+//↓動くか確認
   const APP_KEY = 'sampleApp'
 
 
@@ -50,8 +53,6 @@ const App = () => {
 
 
 
-
-  const location = useLocation();
 
 
   useEffect(()=>{
