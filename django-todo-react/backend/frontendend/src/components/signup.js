@@ -55,26 +55,26 @@ const handleSuccessfulAuthentication = (data) =>{
                     <input
                        type="email"
                        name="email"
-                       placeholder="メールアドレス"
+                       placeholder="E-mail"
                        value={email}
                        onChange={event => setEmail(event.target.value)}
                     />
                     <input
                        type="password"
                        name="password"
-                       placeholder="パスワード"
+                       placeholder="Password"
                        value={password}
                        onChange={event => setPassword(event.target.value)}
                     />
                     <input
                        type="username"
                        name="username"
-                       placeholder="ユーザー名"
+                       placeholder="Username"
                        value={username}
                        onChange={event => setUsername(event.target.value)}
                     />
 
-                   <button type="submit">登録</button>
+                   <button type="submit">Signup</button>
                 </form>
             </div>
         )

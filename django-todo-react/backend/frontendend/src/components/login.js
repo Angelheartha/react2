@@ -46,33 +46,33 @@ const handleSuccessfulAuthentication = (data) =>{
     return (
         <div>
             {/* ログインに変更 */}
-            <p>ログイン</p>
+            <p>Login</p>
 
             {/* フォーム内のpassword_confrmation入力フィールド削除 */}
-            <form onSubmit={handleSubmit}>
+            <form className="form" onSubmit={handleSubmit}>
                 <input
                     type="email"
                     name="email"
-                    placeholder="メールアドレス"
+                    placeholder="E-mail"
                     value={email}
                     onChange={event => setEmail(event.target.value)}
                 />
                 <input
                     type="password"
                     name="password"
-                    placeholder="パスワード"
+                    placeholder="Password"
                     value={password}
                     onChange={event => setPassword(event.target.value)}
                 />
                 <input
                     type="username"
                     name="username"
-                    placeholder="ユーザー名"
+                    placeholder="Username"
                     value={username}
                     onChange={event => setUsername(event.target.value)}
                 />
 
-                <button type="submit">ログイン</button>
+                <button type="submit">Login</button>
             </form>
         </div>
     )

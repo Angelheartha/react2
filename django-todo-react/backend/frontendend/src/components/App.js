@@ -55,10 +55,10 @@ const checkLoginStatus = () => {
       .then(response => {
         if (response.statusText　&& loggedInStatus === "未ログイン") {
           setLoggedInStatus("ログインなう")
-          console.log("loo")
+          console.log("looo")
           //setUser(response.data.user)
         }else if (!response.statusText　&& loggedInStatus === "ログインなう") {
-          console.log("lo")
+          console.log("lool")
           setLoggedInStatus("未ログイン")
           //setUser({})
         }

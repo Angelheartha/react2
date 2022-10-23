@@ -37,17 +37,16 @@ display:block;
 }
 
 
-.form input[type=submit]{
+
+.form button[type=submit]{
 width:70px;
 margin:0 auto;
 }
 
 
-.form{
-  display:flex;
-  flex-direction:column;
-  justify-content:center;
-}
+
+
+
 
 
 
@@ -104,3 +103,16 @@ text-align:center;
 
 
 
+
+@media(max-width:420px){
+.form{
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+
+}
+
+
+
+
+}
