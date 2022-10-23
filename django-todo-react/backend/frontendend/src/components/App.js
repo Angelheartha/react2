@@ -1,10 +1,11 @@
-import React, { Component} from "react";
+import { Component} from "react";
+import React, { useEffect, useReducer } from 'react'
 import { BrowserRouter, Router, Route, Routes, Link, useLocation} from "react-router-dom";
 import Login from "./login";
 import Signup from "./signup";
 import Home from "./home";
 import Dashboard from "./Dashboard";
-import { useState,useEffect} from "react";
+import { useState} from "react";
 import axiosInstance from "../axiosApi";
 import Modal from "./Modal";
 import axios from "axios";
@@ -30,6 +31,22 @@ const App = () => {
   const[password, setPassword] = useState("")
   const[username, setUsername] = useState("")
   //const [user, setUser]=useState({});//
+
+
+  const APP_KEY = 'sampleApp'
+
+
+  const appState = localStorage.getItem(APP_KEY)
+  const initialState = appState ? JSON.parse(appState) : {
+    events: [],
+    operationLogs: []
+  }
+  const [state, dispatch] = useReducer(reducer, initialState)
+
+  useEffect(() => {
+    localStorage.setItem(APP_KEY, JSON.stringify(state))
+  }, [state])
+
 
 
 
