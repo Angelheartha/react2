@@ -26,6 +26,9 @@ const App = () => {
   const [input, setInput]=useState("");
   const [textarea, setTextarea]=useState("");
   const [loggedInStatus, setLoggedInStatus]=useState("未ログイン");
+  const[email, setEmail] = useState("")
+  const[password, setPassword] = useState("")
+  const[username, setUsername] = useState("")
   //const [user, setUser]=useState({});//
 
 
@@ -51,8 +54,15 @@ const App = () => {
 
 
 const checkLoginStatus = () => {
-   axiosInstance.post("/token/refresh/" , { withCredentials: true })
-      .then(response => {
+   axiosInstance.post("/token/refresh/" ,
+   {
+                            username: username,
+                            email: email,
+                            password: password
+
+            },
+   { withCredentials: true }
+   ).then(response => {
         if (response.data.refresh　&& loggedInStatus === "未ログイン") {
           console.log("looo")
           setLoggedInStatus("ログインなう")
