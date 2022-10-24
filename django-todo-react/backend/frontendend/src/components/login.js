@@ -35,9 +35,9 @@ const handleSuccessfulAuthentication = (data) =>{
                 axiosInstance.post("/token/obtain/",
             {
                 // ここのpassword_confirmationフィールドも削除
-                    username: username,
-                    email: email,
-                    password: password,
+                    username: setUsername,
+                    email: setEmail,
+                    password: setPassword,
 
             },
             { withCredentials: true }
