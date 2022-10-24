@@ -7,9 +7,9 @@ const Signup = (props) => {
 
 
    const[email, setEmail] = useState("")
-   const[password, setPassword] = useState("")
-   const[username, setUsername] = useState("")
-   const navigate = useNavigate()
+ //  const[password, setPassword] = useState("")
+ //  const[username, setUsername] = useState("")
+ //  const navigate = useNavigate()
 
 
 
@@ -26,9 +26,9 @@ const handleSuccessfulAuthentication = (data) =>{
    const handleSubmit = (event) => {
          axiosInstance.post('/user/create/',
              {
-                            username: username,
-                            email: email,
-                            password: password
+                            username: props.setUsername,
+                            email: props.setEmail,
+                            password: props.setPassword
 
             },
             {withCredentials:true}
@@ -56,22 +56,22 @@ const handleSuccessfulAuthentication = (data) =>{
                        type="email"
                        name="email"
                        placeholder="E-mail"
-                       value={email}
-                       onChange={event => setEmail(event.target.value)}
+                       value={props.email}
+                       onChange={event => props.setEmail(event.target.value)}
                     />
                     <input
                        type="password"
                        name="password"
                        placeholder="Password"
-                       value={password}
-                       onChange={event => setPassword(event.target.value)}
+                       value={props.password}
+                       onChange={event => props.setPassword(event.target.value)}
                     />
                     <input
                        type="username"
                        name="username"
                        placeholder="Username"
-                       value={username}
-                       onChange={event => setUsername(event.target.value)}
+                       value={props.username}
+                       onChange={event => props.setUsername(event.target.value)}
                     />
 
                    <button className="button" type="submit">Signup</button>

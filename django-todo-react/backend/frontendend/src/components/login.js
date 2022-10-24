@@ -50,9 +50,9 @@ const psss = (data) =>{
                 axiosInstance.post("/token/obtain/",
             {
                 // ここのpassword_confirmationフィールドも削除
-                    username: props.username,
-                    email: props.email,
-                    password: props.password,
+                    username: props.setUsername,
+                    email: props.setEmail,
+                    password: props.setPassword,
 
             },
             { withCredentials: true }
@@ -85,21 +85,21 @@ const psss = (data) =>{
                     name="email"
                     placeholder="E-mail"
                     value={props.email}
-                    onChange={event=>{emmm}}
+                    onChange={event=>props.setEmail(event.target.value)}
                 />
                 <input
                     type="password"
                     name="password"
                     placeholder="Password"
                     value={props.password}
-                    onChange={event=>{psss}}
+                    onChange={event=>props.setPassword(event.target.value)}
                 />
                 <input
                     type="username"
                     name="username"
                     placeholder="Username"
                     value={props.username}
-                    onChange={event=>{errr}}
+                    onChange={event=>props.setUsername(event.target.value)}
                 />
 
                 <button className="button" type="submit">Login</button>

@@ -120,18 +120,18 @@ const handleLogout = () => {
   }
 
 
-  const err = () =>{
-    setUsername("")
-    }
+ // const err = () =>{
+ //   setUsername("")
+ //   }
 
 
-  const emm = () =>{
-   setEmail("")
-  }
+ // const emm = () =>{
+ //  setEmail("")
+ // }
 
-  const pss =() =>{
-   setPassword("")
-  }
+ // const pss =() =>{
+ //  setPassword("")
+ // }
 
 
 
@@ -444,14 +444,15 @@ const Act = (props) => {
                         <Route exact path={"/login/"}
                         element={
                         //<Login/>
-                        <Login handleSuccessfulAuthentication={handleSuccessfulAuthentication} handleLogin={handleLogin} err={err} emm={emm} pss={pss}
+                        <Login handleSuccessfulAuthentication={handleSuccessfulAuthentication} handleLogin={handleLogin} //err={err} emm={emm} pss={pss}
                         username={username} setUsername={setUsername} password={password} setPassword={setPassword} email={email} setEmail={setEmail}/>
                         }
                         />
 
                         <Route exact path={"/signup/"}
                         element={
-                        <Signup handleLogin={handleLogin}/>
+                        <Signup handleLogin={handleLogin}
+                        username={username} setUsername={setUsername} password={password} setPassword={setPassword} email={email} setEmail={setEmail}/>
                         }
                         />
 
