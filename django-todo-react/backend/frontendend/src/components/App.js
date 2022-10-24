@@ -34,6 +34,7 @@ const App = () => {
 
 
 
+
 var array = [];
 var obj = {
   username:username,
@@ -48,6 +49,8 @@ var setjson = JSON.stringify(obj);
 localStorage.setItem('キー', setjson);
 var see =localStorage.getItem('キー');
 console.log(see)
+
+
 
 
 
@@ -79,6 +82,7 @@ const checkLoginStatus = () => {
                             username:username,
                             email:email,
                             password:password,
+
 
             },
    { withCredentials: true }
