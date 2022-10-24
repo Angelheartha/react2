@@ -35,9 +35,9 @@ const handleSuccessfulAuthentication = (data) =>{
                 axiosInstance.post("/token/obtain/",
             {
                 // ここのpassword_confirmationフィールドも削除
-                    username: setUsername,
-                    email: setEmail,
-                    password: setPassword,
+                    username: username,
+                    email: email,
+                    password: password,
 
             },
             { withCredentials: true }
@@ -56,6 +56,10 @@ const handleSuccessfulAuthentication = (data) =>{
     }
 
 
+
+    const err = () =>{
+    props.setUsername("");
+    }
 
 
 
@@ -89,7 +93,7 @@ const handleSuccessfulAuthentication = (data) =>{
                     name="username"
                     placeholder="Username"
                     value={props.username}
-                    onChange={event => props.setUsername(event.target.value)}
+                    onChange={event => err(event.target.value)}
                 />
 
                 <button className="button" type="submit">Login</button>
