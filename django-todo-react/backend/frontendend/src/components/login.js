@@ -30,6 +30,10 @@ const handleSuccessfulAuthentication = (data) =>{
   }
 
 
+const errr = (props) =>{
+   props.err(event.target.value);
+}
+
     const handleSubmit = (event) => {
         // 通信先のURLを/loginに書き換え
                 axiosInstance.post("/token/obtain/",
@@ -54,16 +58,6 @@ const handleSuccessfulAuthentication = (data) =>{
         })
         event.preventDefault()
     }
-
-
-
-    const err = () =>{
-    props.setUsername("");
-    }
-
-
-
-
 
 
 
@@ -93,7 +87,7 @@ const handleSuccessfulAuthentication = (data) =>{
                     name="username"
                     placeholder="Username"
                     value={props.username}
-                    onChange={event => err(event.target.value)}
+                    onChange={event => errr()}
                 />
 
                 <button className="button" type="submit">Login</button>

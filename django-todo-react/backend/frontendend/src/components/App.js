@@ -120,6 +120,11 @@ const handleLogout = () => {
   }
 
 
+  const err = () =>{
+    setUsername("")
+    }
+
+
 
   const handleSuccessfulAuthentication = () =>{
         console.log('miss')
