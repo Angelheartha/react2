@@ -24,15 +24,17 @@ const handleSuccessfulAuthentication = (data) =>{
 
 
    const handleSubmit = (event) => {
+         console.log(kk)
          axiosInstance.post('/user/create/',
              {
                             username: props.setUsername,
                             email: props.setEmail,
-                            password: props.setPassword
+                            password:props.setPassword
 
             },
             {withCredentials:true}
             ).then(response=>{
+               console.log(kkk)
                props.handleLogin()
                if(response.statusText === 'Created'){
                handleSuccessfulAuthentication(response.data)

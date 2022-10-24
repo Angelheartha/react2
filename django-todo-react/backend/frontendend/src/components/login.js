@@ -52,7 +52,7 @@ const psss = (data) =>{
                 // ここのpassword_confirmationフィールドも削除
                     username: props.setUsername,
                     email: props.setEmail,
-                    password: props.setPassword,
+                    password: props.setPassword
 
             },
             { withCredentials: true }
