@@ -444,7 +444,8 @@ const Act = (props) => {
                         <Route exact path={"/login/"}
                         element={
                         //<Login/>
-                        <Login handleSuccessfulAuthentication={handleSuccessfulAuthentication} handleLogin={handleLogin} err={err} emm={emm} pss={pss}/>
+                        <Login handleSuccessfulAuthentication={handleSuccessfulAuthentication} handleLogin={handleLogin} err={err} emm={emm} pss={pss}
+                        username={username} setUsername={setUsername} password={password} setPassword={setPassword} email={email} setEmail={setEmail}/>
                         }
                         />
 
