@@ -59,7 +59,7 @@ console.log(see)
   useEffect(()=>{
   refreshList();
 
-  checkLoginStatus();
+//  checkLoginStatus();
   },[])
 
 
@@ -123,6 +123,16 @@ const handleLogout = () => {
   const err = () =>{
     setUsername("")
     }
+
+
+  const emm = () =>{
+   setEmail("")
+  }
+
+  const pss =() =>{
+   setPassword("")
+  }
+
 
 
 

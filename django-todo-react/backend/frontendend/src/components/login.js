@@ -30,22 +30,34 @@ const handleSuccessfulAuthentication = (data) =>{
   }
 
 
-const errr = (props) =>{
+const errr = (data) =>{
    props.err(event.target.value);
 }
 
+
+const emmm = (data) =>{
+   props.emm(event.target.value);
+}
+
+const psss = (data) =>{
+   props.pss(event.target.value);
+}
+
+
     const handleSubmit = (event) => {
         // 通信先のURLを/loginに書き換え
+                console.log(las)
                 axiosInstance.post("/token/obtain/",
             {
                 // ここのpassword_confirmationフィールドも削除
-                    username: username,
-                    email: email,
-                    password: password,
+                    username: props.username,
+                    email: props.email,
+                    password: props.password,
 
             },
             { withCredentials: true }
         ).then(response => {
+            console.log(las)
             //props.handleLogin()//
             //console.log(response)//
             console.log(response)
@@ -73,21 +85,21 @@ const errr = (props) =>{
                     name="email"
                     placeholder="E-mail"
                     value={props.email}
-                    onChange={event => props.setEmail(event.target.value)}
+                    onChange={event => {emmm}}
                 />
                 <input
                     type="password"
                     name="password"
                     placeholder="Password"
                     value={props.password}
-                    onChange={event => props.setPassword(event.target.value)}
+                    onChange={event => {psss}}
                 />
                 <input
                     type="username"
                     name="username"
                     placeholder="Username"
                     value={props.username}
-                    onChange={event => errr()}
+                    onChange={event => {errr}}
                 />
 
                 <button className="button" type="submit">Login</button>
