@@ -85,21 +85,21 @@ const psss = (data) =>{
                     name="email"
                     placeholder="E-mail"
                     value={props.email}
-                    onChange={event => {emmm}}
+                    onChange={event=>{emmm}}
                 />
                 <input
                     type="password"
                     name="password"
                     placeholder="Password"
                     value={props.password}
-                    onChange={event => {psss}}
+                    onChange={event=>{psss}}
                 />
                 <input
                     type="username"
                     name="username"
                     placeholder="Username"
                     value={props.username}
-                    onChange={event => {errr}}
+                    onChange={event=>{errr}}
                 />
 
                 <button className="button" type="submit">Login</button>
