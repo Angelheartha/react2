@@ -1,4 +1,5 @@
-import React, { useState } from 'react'
+import React, {user} from 'react'
+import { useState,useEffect} from "react";
 import axios from 'axios'
 import axiosInstance from "../axiosApi";
 import { useNavigate } from "react-router-dom";
@@ -7,11 +8,20 @@ import App from "./App";
 // Login関数コンポーネントへ書き換え
 export default function Login(props) {
     // password_confirmationフィールドを削除
-     const [email, setEmail] = useState("")
-     const [password, setPassword] = useState("")
-     const [username, setUsername] = useState("")
+     //const [email, setEmail] = useState("")
+     //const [password, setPassword] = useState("")
+     //const [username, setUsername] = useState("")
      const navigate = useNavigate()
 
+
+
+
+
+
+  //useEffect(()=>{
+  //checkLoginStatus();
+
+  //},[])
 
 
 
@@ -48,6 +58,9 @@ const handleSuccessfulAuthentication = (data) =>{
 
 
 
+
+
+
     return (
         <div>
             {/* ログインに変更 */}
@@ -59,22 +72,22 @@ const handleSuccessfulAuthentication = (data) =>{
                     type="email"
                     name="email"
                     placeholder="E-mail"
-                    value={email}
-                    onChange={event => setEmail(event.target.value)}
+                    value={props.email}
+                    onChange={event => props.setEmail(event.target.value)}
                 />
                 <input
                     type="password"
                     name="password"
                     placeholder="Password"
-                    value={password}
-                    onChange={event => setPassword(event.target.value)}
+                    value={props.password}
+                    onChange={event => props.setPassword(event.target.value)}
                 />
                 <input
                     type="username"
                     name="username"
                     placeholder="Username"
-                    value={username}
-                    onChange={event => setUsername(event.target.value)}
+                    value={props.username}
+                    onChange={event => props.setUsername(event.target.value)}
                 />
 
                 <button className="button" type="submit">Login</button>

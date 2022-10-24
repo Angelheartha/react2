@@ -33,24 +33,21 @@ const App = () => {
   //const [user, setUser]=useState({});//
 
 
-//↓動くか確認
-//  const APP_KEY = 'sampleApp'
+
+var array = [];
+var obj = {
+  username:username,
+  email:email,
+  password:password,
+};
+array.push(obj);
 
 
-//  const appState = localStorage.getItem(APP_KEY)
-//  const initialState = appState ? JSON.parse(appState) : {
-//    events: [],
-//    operationLogs: []
- // }
 
-
-//  const [state, dispatch] = useReducer(reducer, initialState)
-
-
-//  useEffect(() => {
- //   localStorage.setItem(APP_KEY, JSON.stringify(state))
-//  }, [state])
-
+var setjson = JSON.stringify(obj);
+localStorage.setItem('キー', setjson);
+var see =localStorage.getItem('キー');
+console.log(see)
 
 
 
@@ -58,8 +55,8 @@ const App = () => {
 
   useEffect(()=>{
   refreshList();
+
   checkLoginStatus();
-  //checkLoginStatus();
   },[])
 
 
@@ -69,11 +66,10 @@ const App = () => {
   //})
 
 
-var data[setEmail,setPassword,setUsername]
-cat = localStorage.setItem('key', data);
+//var data[setEmail,setPassword,setUsername]
+//cat = localStorage.setItem('key', data);
 //var cat = localStorage.getItem("key");
-console.log(cat);
-
+//console.log(cat);
 
 
 
@@ -101,6 +97,8 @@ const checkLoginStatus = () => {
         console.log("ログインエラー", error)
     })
 }
+
+
 
 
 const handleLogout = () => {
