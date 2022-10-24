@@ -1,6 +1,7 @@
 import { Component} from "react";
 import React, {useEffect, useReducer } from 'react'
 import { BrowserRouter, Router, Route, Routes, Link} from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import Login from "./login";
 import Signup from "./signup";
 import Home from "./home";
@@ -31,6 +32,7 @@ const App = () => {
   const[password, setPassword] = useState("")
   const[username, setUsername] = useState("")
   //const [user, setUser]=useState({});//
+  const navigate = useNavigate()
 
 
 
@@ -48,9 +50,7 @@ array.push(obj);
 var setjson = JSON.stringify(obj);
 localStorage.setItem('キー', setjson);
 var see =localStorage.getItem('キー');
-console.log(see)
-
-
+//console.log(see)
 
 
 
@@ -64,9 +64,12 @@ console.log(see)
 
 
 
-   // useEffect(() => {
-   //checkLoginStatus()
-  //})
+    useEffect(() => {
+
+
+
+   checkLoginStatus()
+  })
 
 
 //var data[setEmail,setPassword,setUsername]
@@ -77,12 +80,14 @@ console.log(see)
 
 
 const checkLoginStatus = () => {
+   console.log(see)
    axiosInstance.post("/token/refresh/" ,
-   {
-                            username:username,
-                            email:email,
-                            password:password,
 
+   {
+                           // username:username,
+                           // email:email,
+                           // password:password,
+                           see
 
             },
    { withCredentials: true }
@@ -137,9 +142,8 @@ const handleLogout = () => {
 
 
   const handleSuccessfulAuthentication = () =>{
-        console.log('miss')
         navigate("/Dashboard");
-        handleLogin();
+        //handleLogin();
 
    }
 
@@ -451,7 +455,7 @@ const Act = (props) => {
 
                         <Route exact path={"/signup/"}
                         element={
-                        <Signup handleLogin={handleLogin}
+                        <Signup handleSuccessfulAuthentication={handleSuccessfulAuthentication} handleLogin={handleLogin}
                         username={username} setUsername={setUsername} password={password} setPassword={setPassword} email={email} setEmail={setEmail}/>
                         }
                         />

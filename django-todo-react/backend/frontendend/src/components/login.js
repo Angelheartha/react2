@@ -24,10 +24,10 @@ export default function Login(props) {
 
 
 
-const handleSuccessfulAuthentication = (data) =>{
-        navigate("/Dashboard");
-        props.handleLogin()
-  }
+//const handleSuccessfulAuthentication = (data) =>{
+//        navigate("/Dashboard");
+//        props.handleLogin()
+  //}
 
 
 const errr = (data) =>{
@@ -46,23 +46,21 @@ const psss = (data) =>{
 
     const handleSubmit = (event) => {
         // 通信先のURLを/loginに書き換え
-                console.log(las)
                 axiosInstance.post("/token/obtain/",
             {
                 // ここのpassword_confirmationフィールドも削除
-                    username: props.setUsername,
-                    email: props.setEmail,
-                    password: props.setPassword
+                    username: props.username,
+                    email: props.email,
+                    password: props.password
 
             },
             { withCredentials: true }
         ).then(response => {
-            console.log(las)
-            //props.handleLogin()//
+            props.handleLogin()//
             //console.log(response)//
             console.log(response)
             if (response.statusText === "OK") {
-                 handleSuccessfulAuthentication(response.data)
+                 props.handleSuccessfulAuthentication(response.data)
                  console.log(response)
             }
         }).catch(error => {

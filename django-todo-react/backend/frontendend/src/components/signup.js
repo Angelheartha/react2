@@ -16,7 +16,7 @@ const Signup = (props) => {
 
 const handleSuccessfulAuthentication = (data) =>{
         navigate("/Dashboard");
-        //props.handleLogin()//
+       // props.handleLogin()
 
 
    }
@@ -24,20 +24,19 @@ const handleSuccessfulAuthentication = (data) =>{
 
 
    const handleSubmit = (event) => {
-         console.log(kk)
          axiosInstance.post('/user/create/',
              {
-                            username: props.setUsername,
-                            email: props.setEmail,
-                            password:props.setPassword
-
+                            username: props.username,
+                            email: props.email,
+                            password:props.password
             },
             {withCredentials:true}
             ).then(response=>{
-               console.log(kkk)
                props.handleLogin()
                if(response.statusText === 'Created'){
-               handleSuccessfulAuthentication(response.data)
+               //console.log(response)
+               props.handleSuccessfulAuthentication(response);
+               console.log(response)
                }
 
             }).catch (error =>{
