@@ -1,11 +1,11 @@
 import { Component} from "react";
-import React, { useEffect, useReducer } from 'react'
+import React, {useEffect, useReducer } from 'react'
 import { BrowserRouter, Router, Route, Routes, Link} from "react-router-dom";
 import Login from "./login";
 import Signup from "./signup";
 import Home from "./home";
 import Dashboard from "./Dashboard";
-import { useState} from "react";
+import {useState} from "react";
 import axiosInstance from "../axiosApi";
 import Modal from "./Modal";
 import axios from "axios";
@@ -33,22 +33,23 @@ const App = () => {
   //const [user, setUser]=useState({});//
 
 
-
-
 //↓動くか確認
-  const APP_KEY = 'sampleApp'
+//  const APP_KEY = 'sampleApp'
 
 
-  const appState = localStorage.getItem(APP_KEY)
-  const initialState = appState ? JSON.parse(appState) : {
-    events: [],
-    operationLogs: []
-  }
-  const [state, dispatch] = useReducer(reducer, initialState)
+//  const appState = localStorage.getItem(APP_KEY)
+//  const initialState = appState ? JSON.parse(appState) : {
+//    events: [],
+//    operationLogs: []
+ // }
 
-  useEffect(() => {
-    localStorage.setItem(APP_KEY, JSON.stringify(state))
-  }, [state])
+
+//  const [state, dispatch] = useReducer(reducer, initialState)
+
+
+//  useEffect(() => {
+ //   localStorage.setItem(APP_KEY, JSON.stringify(state))
+//  }, [state])
 
 
 
@@ -58,7 +59,7 @@ const App = () => {
   useEffect(()=>{
   refreshList();
   checkLoginStatus();
-  checkLoginStatus();
+  //checkLoginStatus();
   },[])
 
 
@@ -68,15 +69,20 @@ const App = () => {
   //})
 
 
+var data[setEmail,setPassword,setUsername]
+cat = localStorage.setItem('key', data);
+//var cat = localStorage.getItem("key");
+console.log(cat);
+
 
 
 
 const checkLoginStatus = () => {
    axiosInstance.post("/token/refresh/" ,
    {
-                            username: username,
-                            email: email,
-                            password: password
+                            username:username,
+                            email:email,
+                            password:password,
 
             },
    { withCredentials: true }

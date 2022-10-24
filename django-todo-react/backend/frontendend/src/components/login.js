@@ -2,14 +2,17 @@ import React, { useState } from 'react'
 import axios from 'axios'
 import axiosInstance from "../axiosApi";
 import { useNavigate } from "react-router-dom";
+import App from "./App";
 
 // Login関数コンポーネントへ書き換え
 export default function Login(props) {
     // password_confirmationフィールドを削除
-    const [email, setEmail] = useState("")
-    const [password, setPassword] = useState("")
-    const [username, setUsername] = useState("")
-    const navigate = useNavigate()
+     const [email, setEmail] = useState("")
+     const [password, setPassword] = useState("")
+     const [username, setUsername] = useState("")
+     const navigate = useNavigate()
+
+
 
 
 const handleSuccessfulAuthentication = (data) =>{
@@ -42,6 +45,8 @@ const handleSuccessfulAuthentication = (data) =>{
         })
         event.preventDefault()
     }
+
+
 
     return (
         <div>
