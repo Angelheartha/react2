@@ -14,7 +14,7 @@ import { useAlert } from 'react-alert'
 const Dashboard = (props) => {
 
 
-  useEffect(()=>{
+useEffect(()=>{
   refreshList();
 
   },[])

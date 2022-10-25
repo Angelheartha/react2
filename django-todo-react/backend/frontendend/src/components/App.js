@@ -37,35 +37,37 @@ const App = () => {
 
 
 
-var array = [];
+//console.log(see)
+
+
+
+var array = []
+
 var obj = {
   username:username,
   email:email,
   password:password,
 };
 array.push(obj);
-
-
-
 var setjson = JSON.stringify(obj);
 localStorage.setItem('キー', setjson);
-var see =localStorage.getItem('キー');
-//console.log(see)
+
+
+var getjson = localStorage.getItem('キー');
+var obj = JSON.parse(getjson);
 
 
 
 
-
-  useEffect(()=>{
-  refreshList();
+ // useEffect(()=>{
+  //refreshList();
 
 //  checkLoginStatus();
-  },[])
+  //},[])
 
 
 
     useEffect(() => {
-
 
 
    checkLoginStatus()
@@ -80,14 +82,14 @@ var see =localStorage.getItem('キー');
 
 
 const checkLoginStatus = () => {
-   console.log(see)
+   console.log(obj)
    axiosInstance.post("/token/refresh/" ,
 
    {
-                           // username:username,
-                           // email:email,
-                           // password:password,
-                           see
+                            //username:username,
+                            //email:email,
+                            //password:password,
+                           obj
 
             },
    { withCredentials: true }
@@ -97,7 +99,6 @@ const checkLoginStatus = () => {
           setLoggedInStatus("ログインなう")
           //setUser(response.data.user)
         }else if (!response.data.refresh　&& loggedInStatus === "ログインなう") {
-          console.log("lool")
           setLoggedInStatus("ログインなう")
           //setUser({})
         }
