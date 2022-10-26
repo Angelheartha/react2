@@ -61,6 +61,7 @@ const psss = (data) =>{
             console.log(response)
             if (response.statusText === "OK") {
                  props.handleSuccessfulAuthentication(response.data)
+                 props.local()
                  console.log(response)
             }
         }).catch(error => {

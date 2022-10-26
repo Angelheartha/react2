@@ -41,37 +41,19 @@ const App = () => {
 
 
 
-var array = []
-
-var obj = {
-  username:username,
-  email:email,
-  password:password,
-};
-array.push(obj);
-var setjson = JSON.stringify(obj);
-localStorage.setItem('キー', setjson);
-
-
-var getjson = localStorage.getItem('キー');
-var obj = JSON.parse(getjson);
-
-
-
-
- // useEffect(()=>{
+  useEffect(()=>{
   //refreshList();
 
-//  checkLoginStatus();
-  //},[])
+  checkLoginStatus();
+  },[])
 
 
 
-    useEffect(() => {
+  //  useEffect(() => {
 
 
-   checkLoginStatus()
-  })
+   //checkLoginStatus()
+  //})
 
 
 //var data[setEmail,setPassword,setUsername]
@@ -80,16 +62,40 @@ var obj = JSON.parse(getjson);
 //console.log(cat);
 
 
+const local = () =>{
+
+
+var array = []
+
+var obj = {
+  //username:username,
+  //email:email,
+  //password:password,
+  'username': username,
+  'email': email,
+  'password':password
+};
+array.push(obj);
+var setjson = JSON.stringify(obj);
+localStorage.setItem('キー', setjson);
+
+
+var getjson = localStorage.getItem('キー');
+var objj = JSON.parse(getjson);
+
+}
+
+
+
 
 const checkLoginStatus = () => {
-   console.log(obj)
+   //console.log(objj)
    axiosInstance.post("/token/refresh/" ,
-
    {
+
                             //username:username,
                             //email:email,
                             //password:password,
-                           obj
 
             },
    { withCredentials: true }
@@ -107,7 +113,6 @@ const checkLoginStatus = () => {
         console.log("ログインエラー", error)
     })
 }
-
 
 
 
@@ -450,14 +455,14 @@ const Act = (props) => {
                         element={
                         //<Login/>
                         <Login handleSuccessfulAuthentication={handleSuccessfulAuthentication} handleLogin={handleLogin} //err={err} emm={emm} pss={pss}
-                        username={username} setUsername={setUsername} password={password} setPassword={setPassword} email={email} setEmail={setEmail}/>
+                        username={username} setUsername={setUsername} password={password} setPassword={setPassword} email={email} setEmail={setEmail} local={local}/>
                         }
                         />
 
                         <Route exact path={"/signup/"}
                         element={
                         <Signup handleSuccessfulAuthentication={handleSuccessfulAuthentication} handleLogin={handleLogin}
-                        username={username} setUsername={setUsername} password={password} setPassword={setPassword} email={email} setEmail={setEmail}/>
+                        username={username} setUsername={setUsername} password={password} setPassword={setPassword} email={email} setEmail={setEmail} local={local}/>
                         }
                         />
 
