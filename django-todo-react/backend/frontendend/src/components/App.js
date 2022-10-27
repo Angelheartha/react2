@@ -43,7 +43,7 @@ const App = () => {
 
   useEffect(()=>{
   //refreshList();
-
+  //console.log(local())
   checkLoginStatus();
   },[])
 
@@ -62,7 +62,7 @@ const App = () => {
 //console.log(cat);
 
 
-const local = () =>{
+const local = () => {
 
 
 var array = []
@@ -77,6 +77,7 @@ var obj = {
   'email': email,
   'password':password
 };
+
 array.push(obj);
 var setjson = JSON.stringify(obj);
 localStorage.setItem('キー', setjson);
@@ -93,17 +94,16 @@ var objj = JSON.parse(getjson);
 
 
 const checkLoginStatus = () => {
-   //console.log(objj)
-
    axiosInstance.post("/token/refresh/" ,
    {
-                           username:obj.username,
-                              email:obj.email,
-                           password:obj.password,
+                           username:local.username,
+                              email:local.email,
+                           password:local.password,
 
             },
    { withCredentials: true }
    ).then(response =>{
+        //console.log(local)
         if (response.data.refresh　&& loggedInStatus === "未ログイン") {
           console.log("looo")
           setLoggedInStatus("ログインなう")
