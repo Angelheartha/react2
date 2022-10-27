@@ -67,6 +67,8 @@ const local = () =>{
 
 var array = []
 
+var crazy =  []
+
 var obj = {
   //username:username,
   //email:email,
@@ -83,6 +85,8 @@ localStorage.setItem('キー', setjson);
 var getjson = localStorage.getItem('キー');
 var objj = JSON.parse(getjson);
 
+//var pp = crazy.push(objj)
+//console.log(pp)
 }
 
 
@@ -90,16 +94,16 @@ var objj = JSON.parse(getjson);
 
 const checkLoginStatus = () => {
    //console.log(objj)
+
    axiosInstance.post("/token/refresh/" ,
    {
-
-                            //username:username,
-                            //email:email,
-                            //password:password,
+                           username:obj.username,
+                              email:obj.email,
+                           password:obj.password,
 
             },
    { withCredentials: true }
-   ).then(response => {
+   ).then(response =>{
         if (response.data.refresh　&& loggedInStatus === "未ログイン") {
           console.log("looo")
           setLoggedInStatus("ログインなう")
