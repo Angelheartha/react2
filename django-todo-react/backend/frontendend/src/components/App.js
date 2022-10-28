@@ -84,8 +84,8 @@ var setjson = JSON.stringify(obj);
 localStorage.setItem('キー', setjson);
 
 
-var getjson = localStorage.getItem('キー');
-var objj = JSON.parse(getjson);
+//var getjson = localStorage.getItem('キー');
+//var objj = JSON.parse(getjson);
 
 //var pp = crazy.push(objj)
 //console.log(pp)
