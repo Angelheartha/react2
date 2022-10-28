@@ -45,6 +45,7 @@ const App = () => {
   //refreshList();
   //console.log(local())
   checkLoginStatus();
+
   },[])
 
 
@@ -94,11 +95,14 @@ var objj = JSON.parse(getjson);
 
 
 const checkLoginStatus = () => {
+   var getjson = localStorage.getItem('キー');
+   var objj = JSON.parse(getjson);
+   console.log(objj)
    axiosInstance.post("/token/refresh/" ,
    {
-                           username:local.username,
-                              email:local.email,
-                           password:local.password,
+                           username:objj.username,
+                              email:objj.email,
+                           password:objj.password,
 
             },
    { withCredentials: true }
@@ -109,7 +113,8 @@ const checkLoginStatus = () => {
           setLoggedInStatus("ログインなう")
           //setUser(response.data.user)
         }else if (!response.data.refresh　&& loggedInStatus === "ログインなう") {
-          setLoggedInStatus("ログインなう")
+          setLoggedInStatus("未ログイン")
+          console.log("loloo")
           //setUser({})
         }
       })
