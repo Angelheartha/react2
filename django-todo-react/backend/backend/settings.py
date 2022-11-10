@@ -147,7 +147,8 @@ CORS_ALLOW_CREDENTIALS = True
 
 
 CORS_ORIGIN_WHITELIST = [
-     'http://localhost:3000'
+     'http://localhost:3000',
+      'http://35.78.89.224:8000'
 ]
 
 REST_FRAMEWORK = {
@@ -181,4 +182,5 @@ AUTH_USER_MODEL = "core.Account"
 WHITENOISE_AUTOREFRESH = True
 
 CORS_ORIGIN_ALLOW_ALL = True
+
 
