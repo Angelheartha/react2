@@ -183,4 +183,4 @@ WHITENOISE_AUTOREFRESH = True
 
 CORS_ORIGIN_ALLOW_ALL = True
 
-
+Access_Control_Allow_Origin = 'http://35.78.89.224:8000'
