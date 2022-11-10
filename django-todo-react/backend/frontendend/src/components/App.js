@@ -98,29 +98,33 @@ const checkLoginStatus = () => {
    var getjson = localStorage.getItem('キー');
    var objj = JSON.parse(getjson);
    console.log(objj)
-   axiosInstance.post("/token/refresh/" ,
-   {
+        if(objj === null){
+         console.log("yeath");
+        }else{
+         axiosInstance.post("/token/refresh/" ,{
                            username:objj.username,
                               email:objj.email,
                            password:objj.password,
-
             },
-   { withCredentials: true }
+            { withCredentials: true }
    ).then(response =>{
-        //console.log(local)
         if (response.data.refresh　&& loggedInStatus === "未ログイン") {
-          console.log("looo")
+          console.log("looo");
+          //console.log("yeath");
           setLoggedInStatus("ログインなう")
           //setUser(response.data.user)
         }else if (!response.data.refresh　&& loggedInStatus === "ログインなう") {
           setLoggedInStatus("未ログイン")
-          console.log("loloo")
+         // console.log("yeath");
+          console.log("loloo");
           //setUser({})
         }
       })
       .catch(error => {
         console.log("ログインエラー", error)
     })
+
+        }
 }
 
 
@@ -514,4 +518,5 @@ const Act = (props) => {
 
         );
 }
+
 export default App;

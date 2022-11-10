@@ -51,4 +51,4 @@ yarl==1.8.1
 
 -r requirements-dev.txt
 gunicorn
-psycopg2
+psycopg2`
