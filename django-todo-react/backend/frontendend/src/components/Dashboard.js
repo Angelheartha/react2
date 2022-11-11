@@ -148,7 +148,7 @@ const handleSubmit = (item, props) => {
 
   const refreshList = (props) => {
     axios
-      .get("http://localhost:8000/api/todos/")
+      .get("http://35.78.89.224:8000/api/todos/")
       .then((res) => setTodoList(res.data))
       .catch((err) => console.log(err));
   };
