@@ -133,12 +133,12 @@ const handleSubmit = (item, props) => {
 
         if (item.id) {
        axios
-         .put(`http://localhost:8000/api/todos/${item.id}/`, item)
+         .put(`http://35.78.89.224:8000/api/todos/${item.id}/`, item)
          .then(() => refreshList());
        return;
      }
      axios
-       .post("http://localhost:8000/api/todos/", item)
+       .post("http://35.78.89.224:8000/api/todos/", item)
        .then(() => refreshList());
 
      alert.success('Well done!!!');
@@ -171,7 +171,7 @@ const handleSubmit = (item, props) => {
 
   const handleDelete = (item,props) => {
     axios
-      .delete(`http://localhost:8000/api/todos/${item.id}/`)
+      .delete(`http://35.78.89.224:8000/api/todos/${item.id}/`)
       .then((res) => refreshList());
     alert.success('Bye-Bye');
   };
