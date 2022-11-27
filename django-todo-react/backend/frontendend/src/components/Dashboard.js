@@ -133,12 +133,12 @@ const handleSubmit = (item, props) => {
 
         if (item.id) {
        axios
-         .put(`http://35.78.89.224:8000/api/todos/${item.id}/`, item)
+         .put(`http://52.194.229.247:8000/api/todos/${item.id}/`, item)
          .then(() => refreshList());
        return;
      }
      axios
-       .post("http://35.78.89.224:8000/api/todos/", item)
+       .post("http://52.194.229.247:8000/api/todos/", item)
        .then(() => refreshList());
 
      alert.success('Well done!!!');
@@ -148,7 +148,7 @@ const handleSubmit = (item, props) => {
 
   const refreshList = (props) => {
     axios
-      .get("http://35.78.89.224:8000/api/todos/")
+      .get("http://52.194.229.247:8000/api/todos/")
       .then((res) => setTodoList(res.data))
       .catch((err) => console.log(err));
   };
@@ -171,7 +171,7 @@ const handleSubmit = (item, props) => {
 
   const handleDelete = (item,props) => {
     axios
-      .delete(`http://35.78.89.224:8000/api/todos/${item.id}/`)
+      .delete(`http://52.194.229.247:8000/api/todos/${item.id}/`)
       .then((res) => refreshList());
     alert.success('Bye-Bye');
   };

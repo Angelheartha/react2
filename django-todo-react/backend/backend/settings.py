@@ -12,7 +12,6 @@ core.Account = get_user_model
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
 
@@ -20,7 +19,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-hfad7^s(!=@^3nmba%qxne)h6gpj-9r0pcz!brwf)1)3nsy_3k'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['*']
 
@@ -48,6 +47,7 @@ INSTALLED_APPS = [
 
 ]
 
+
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -65,6 +65,8 @@ JWT_AUTH = {
 }
 
 ROOT_URLCONF = 'backend.urls'
+
+
 
 TEMPLATES = [
     {
@@ -88,12 +90,7 @@ WSGI_APPLICATION = 'backend.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
-#DATABASES = {
-#    'default': {
-#        'ENGINE': 'django.db.backends.sqlite3',
-#        'NAME': BASE_DIR / 'db.sqlite3',
-#    }
-#}
+
 DATABASES = {
     'default': env.db(),
 }
@@ -117,8 +114,6 @@ AUTH_PASSWORD_VALIDATORS = [
 ]
 
 
-# Internationalization
-# https://docs.djangoproject.com/en/3.2/topics/i18n/
 
 LANGUAGE_CODE = 'en-us'
 
@@ -134,21 +129,22 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
 
-STATIC_URL = '/static/'
+
+BASE_DIR = Path(__file__).resolve().parent.parent.parent
+STATIC_URL = "/static/"
+STATIC_ROOT = str(BASE_DIR / "staticfiles")
+STATICFILES_DIRS = [str(BASE_DIR / "static")]
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
+
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
-
-
 
 CORS_ALLOW_CREDENTIALS = True
 
-
 CORS_ORIGIN_WHITELIST = [
-     'http://localhost:3000',
-     'http://35.78.89.224:8000'
+    'http://52.194.229.247:8000'
 ]
 
 REST_FRAMEWORK = {
@@ -156,11 +152,13 @@ REST_FRAMEWORK = {
         'rest_framework.permissions.IsAuthenticated',
     ),
     'DEFAULT_AUTHENTICATION_CLASSES': (
-         'rest_framework_simplejwt.authentication.JWTAuthentication',
+        'rest_framework_simplejwt.authentication.JWTAuthentication',
     ),
     'NON_FIELD_ERROS_KEY': 'detail',
     'TEST_REQUEST_DEFAULT_FORMAT': 'json'
 }
+
+
 SIMPLE_JWT = {
     'ACCESS_TOKEN_LIFETIME': timedelta(minutes=5),
     'REFRESH_TOKEN_LIFETIME': timedelta(days=14),
@@ -183,4 +181,10 @@ WHITENOISE_AUTOREFRESH = True
 
 CORS_ORIGIN_ALLOW_ALL = True
 
-Access_Control_Allow_Origin = 'http://35.78.89.224:8000'
+CORS_ALLOW_CREDENTIALS = True
+
+SECURE_CROSS_ORIGIN_OPENER_POLICY = None
+
+SESSION_COOKIE_SECURE = False
+
+# Access_Control_Allow_Origin = 'http://52.194.229.247:8000'

@@ -1,3 +1,4 @@
+
 aiohttp==3.8.1
 aiosignal==1.2.0
 asgiref==3.5.2
@@ -26,6 +27,7 @@ idna==3.4
 itypes==1.2.0
 Jinja2==3.1.2
 MarkupSafe==2.1.1
+
 multidict==6.0.2
 oauthlib==3.2.1
 pipenv==2022.10.25
@@ -49,6 +51,3 @@ virtualenv-clone==0.5.7
 yarl==1.8.1
 
 
--r requirements-dev.txt
-gunicorn
-psycopg2`

@@ -2,7 +2,7 @@
 
 import axios from 'axios'
 
-const baseURL = 'http://35.78.89.224:8000/cores'
+const baseURL = 'http://52.194.229.247:8000/cores'
 
 const axiosInstance = axios.create({
     baseURL: baseURL,

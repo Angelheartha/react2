@@ -18,7 +18,7 @@ const handleSuccessfulAuthentication = (data) =>{
 
 
 const handleLogoutClick = () => {
-        axios.get("http://35.78.89.224:8000/", { withCredentials: true })
+        axios.get("http://52.194.229.247:8000/", { withCredentials: true })
             .then(response => {
                 props.handleLogout()
                 console.log("ll")
