@@ -36,7 +36,7 @@ router.register(r'todos', views.TodoView, 'todo')
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/', include(router.urls)),
-    path('cores', include('core.urls')),
+    path('cores/', include('core.urls')),
     path('', include('frontendend.urls')),
 
   #  path('api/token/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
