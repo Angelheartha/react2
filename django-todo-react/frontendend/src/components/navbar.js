@@ -16,7 +16,7 @@ import { useAlert } from 'react-alert'
 
 
 
-const App = () => {
+const Navbar = () => {
   const [viewCompleted, setViewCompleted] = useState(false);
   const [todoList, setTodoList] = useState([]);
   const [modal, setModal] = useState(false);
@@ -518,4 +518,4 @@ const Act = (props) => {
         );
 }
 
-export default App;
+export default Navbar;
