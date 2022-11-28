@@ -1,5 +1,5 @@
 {
-  "name": "frontend",
+  "name": "frontendend",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -8,30 +8,7 @@
     "start": "next start",
     "lint": "next lint"
   },
-  "dependencies": {
-    "eslint": "8.28.0",
-    "eslint-config-next": "13.0.5",
-    "next": "13.0.5",
-    "axios": "^0.19.0",
-    "bootstrap": "^4.6.2",
-    "footer": "^1.0.0",
-    "jquery": "^3.6.1",
-    "npm": "6.14.4",
-    "popper.js": "^1.16.1",
-    "prop-types": "^15.8.1",
-    "react": "^18.1",
-    "react-alert": "^7.0.3",
-    "react-alert-template-basic": "^1.0.2",
-    "react-cookie": "^4.1.1",
-    "react-cookies": "^0.1.1",
-    "react-dom": "^18.1",
-    "react-hook-form": "^7.34.2",
-    "react-router-dom": "^6.3.0",
-    "react-scripts": "^2.1.3",
-    "reactstrap": "^8.9.0",
-    "web-vitals": "^2.1.4"
-  },
-  "devDependencies": {
+   "devDependencies": {
     "@babel/core": "^7.4.5",
     "@babel/preset-env": "^7.4.5",
     "@babel/preset-react": "^7.0.0",
@@ -44,5 +21,27 @@
     "webpack": "^4.46.0",
     "webpack-cli": "^3.3.12"
   },
+  "dependencies": {
+    "next": "13.0.5",
+    "react": "^18.1",
+    "react-dom": "^18.1",
+    "axios": "^0.19.0",
+    "bootstrap": "^4.6.2",
+    "footer": "^1.0.0",
+    "jquery": "^3.6.1",
+    "npm": "6.14.4",
+    "popper.js": "^1.16.1",
+    "prop-types": "^15.8.1",
+    "react-alert": "^7.0.3",
+    "react-alert-template-basic": "^1.0.2",
+    "react-cookie": "^4.1.1",
+    "react-cookies": "^0.1.1",
+    "react-hook-form": "^7.34.2",
+    "react-router-dom": "^6.3.0",
+    "react-scripts": "^2.1.3",
+    "reactstrap": "^8.9.0",
+    "web-vitals": "^2.1.4"
+  },
   "keywords": []
+
 }
