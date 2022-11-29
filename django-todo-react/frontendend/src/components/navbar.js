@@ -25,7 +25,7 @@ const Navbar = () => {
   const [activeItem, setActiveItem] = useState({title: "", description: "", completed: false });
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [description,setDescription] = useState("");
-  const alert = useAlert()
+ // const alert = useAlert()//
   const [input, setInput]=useState("");
   const [textarea, setTextarea]=useState("");
   const [loggedInStatus, setLoggedInStatus]=useState("未ログイン");
@@ -33,7 +33,7 @@ const Navbar = () => {
   const[password, setPassword] = useState("")
   const[username, setUsername] = useState("")
   //const [user, setUser]=useState({});//
-  const navigate = useNavigate()
+//  const navigate = useNavigate()//
 
 
 
@@ -183,7 +183,7 @@ const handleLogout = () => {
 
 
 const Act = (props) => {
- const alert = useAlert()
+// const alert = useAlert()
 
   return (
      <div id="overlay">
@@ -450,20 +450,28 @@ const Act = (props) => {
             <div className="site">
 
                  <nav className="bottonss">
-                    <Link href="/"  className="nav-linkk" >Home</Link>
-                    <Link href="/login/" className="nav-linkk" >Login</Link>
-                    <Link href="/signup/" className="nav-linkk" >Signup</Link>
-                    <Link href="/Dashboard/" className="nav-linkk" >Dashboard</Link>
+                    <Link href="/"  className="nav-linkk" >
+                    Home
+                    </Link>
+                    <Link href="/login/" className="nav-linkk" >
+                    Login
+                    </Link>
+                    <Link href="/signup/" className="nav-linkk" >
+                    Signup
+                    </Link>
+                    <Link href="/Dashboard/" className="nav-linkk" >
+                    Dashboard
+                    </Link>
                     <button className={"nav-bot"} onClick={handleLogout}>Logout</button>
                  </nav>
 
 
 
                  <div className="golinks">
-                    <h1 className="message">You are always welcome!</h1>
 
-                     <Routes>
-                        <Route exact path={"/login/"}
+
+
+                        <Link href="/login/"
                         element={
                         //<Login/>
                         <Login handleSuccessfulAuthentication={handleSuccessfulAuthentication} handleLogin={handleLogin} //err={err} emm={emm} pss={pss}
@@ -471,7 +479,7 @@ const Act = (props) => {
                         }
                         />
 
-                        <Route exact path={"/signup/"}
+                        <Link href="/signup/"
                         element={
                         <Signup handleSuccessfulAuthentication={handleSuccessfulAuthentication} handleLogin={handleLogin}
                         username={username} setUsername={setUsername} password={password} setPassword={setPassword} email={email} setEmail={setEmail} local={local}/>
@@ -481,8 +489,7 @@ const Act = (props) => {
 
 
 
-                        <Route
-                          exact path={"/"}
+                        <Link href="/"
                           element={
                           <Home handleLogin={handleLogin} handleLogout={handleLogout} loggedInStatus={loggedInStatus} />
                           }
@@ -490,16 +497,11 @@ const Act = (props) => {
 
 
 
-                        <Route
-                          exact path={"/Dashboard/"}
+                        <link href="/Dashboard/"
                           element={
                           <Dashboard  loggedInStatus={loggedInStatus} />
                           }
                           />
-
-
-
-                     </Routes>
 
                  </div>
 
