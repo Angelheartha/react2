@@ -1,16 +1,19 @@
 import React from 'react';
 import Signup from "./signup";
-import { useNavigate } from "react-router-dom";
-import axios from 'axios'
+//import { useNavigate } from "react-router-dom";
+import { useRouter } from 'next/router'
+import Link from 'next/link';
+import axios from 'axios';
 //import axiosInstance from "/utils/axiosApi";
 
 
 const Home = (props) =>{
-     const navigate = useNavigate()
-
+     //const navigate = useNavigate()
+      const router = useRouter()
 
 const handleSuccessfulAuthentication = (data) =>{
-        navigate("/Dashboard");
+      <Link href="/login/" className="nav-linkk" >
+        router.push("/Dashboard");
         props.handleLogin(data);
 
 
@@ -38,5 +41,7 @@ const handleLogoutClick = () => {
   </div>
   )
 }
+
+
 
 export default Home;
