@@ -450,12 +450,14 @@ const Act = (props) => {
             <div className="site">
 
                  <nav className="bottonss">
-                    <Link href="/"  className="nav-linkk" >
-                    Home
+                    <Link legacyBehavior href="/" className="nav-linkk" >
+                     <a className="nav-linkk">Home</a>
                     </Link>
-                    <Link href="/login/" className="nav-linkk" >
-                    Login
+
+                    <Link legacyBehavior href="/login/" className="nav-linkk" >
+                     <a className="nav-linkk">Login</a>
                     </Link>
+
                     <Link href="/signup/" className="nav-linkk" >
                     Signup
                     </Link>
@@ -467,11 +469,13 @@ const Act = (props) => {
 
 
 
+
+
+
                  <div className="golinks">
 
-
-
-                        <Link href="/login/"
+                   <Routes>
+                        <Route exact path={"/login/"}
                         element={
                         //<Login/>
                         <Login handleSuccessfulAuthentication={handleSuccessfulAuthentication} handleLogin={handleLogin} //err={err} emm={emm} pss={pss}
@@ -479,7 +483,8 @@ const Act = (props) => {
                         }
                         />
 
-                        <Link href="/signup/"
+
+                   <Route exact path={"/signup/"}
                         element={
                         <Signup handleSuccessfulAuthentication={handleSuccessfulAuthentication} handleLogin={handleLogin}
                         username={username} setUsername={setUsername} password={password} setPassword={setPassword} email={email} setEmail={setEmail} local={local}/>
@@ -489,7 +494,8 @@ const Act = (props) => {
 
 
 
-                        <Link href="/"
+                   <Route
+                          exact path={"/"}
                           element={
                           <Home handleLogin={handleLogin} handleLogout={handleLogout} loggedInStatus={loggedInStatus} />
                           }
@@ -497,16 +503,52 @@ const Act = (props) => {
 
 
 
-                        <link href="/Dashboard/"
+                   <Route
+                          exact path={"/Dashboard/"}
                           element={
                           <Dashboard  loggedInStatus={loggedInStatus} />
                           }
                           />
 
+
+
+                   </Routes>
+
+
                  </div>
 
 
             </div>
+
+
+
+
+
+
+                       // <Login handleSuccessfulAuthentication={handleSuccessfulAuthentication} handleLogin={handleLogin} //err={err} emm={emm} pss={pss}
+                      //  username={username} setUsername={setUsername} password={password} setPassword={setPassword} email={email} setEmail={setEmail} local={local}/>
+
+
+
+                      //  <Link href="/signup/"
+                      //  element={
+                      //  <Signup handleSuccessfulAuthentication={handleSuccessfulAuthentication} handleLogin={handleLogin}
+                      //  username={username} setUsername={setUsername} password={password} setPassword={setPassword} email={email} setEmail={setEmail} local={local}/>
+                      //  }
+                      //  />
+
+
+                      //    <Home handleLogin={handleLogin} handleLogout={handleLogout} loggedInStatus={loggedInStatus} />
+
+
+
+
+                        //<link href="/Dashboard/"
+                        //  element={
+                        //  <Dashboard  loggedInStatus={loggedInStatus} />
+                        //  }
+                        //  />
+
 
 
 

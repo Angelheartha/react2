@@ -2,8 +2,9 @@ import React, {user} from 'react'
 import { useState,useEffect} from "react";
 import axios from 'axios'
 //import axiosInstance from "/utils/axiosApi";
-import { useNavigate } from "react-router-dom";
+//import { useNavigate } from "react-router-dom";
 import App from "./navbar";
+import Link from 'next/link';
 
 // Login関数コンポーネントへ書き換え
 export default function Login(props) {
@@ -11,12 +12,16 @@ export default function Login(props) {
      //const [email, setEmail] = useState("")
      //const [password, setPassword] = useState("")
      //const [username, setUsername] = useState("")
-     const navigate = useNavigate()
-
-
-
-
-
+     //const navigate = useNavigate()
+     const handleSuccessfulAuthentication = props.handleSuccessfulAuthentication;
+     const handleLogin = props.handleLogin;
+     const username = props.username;
+     const setUsername = props.setUsername;
+     const password = props.password;
+     const setPassword = props.setPassword;
+     const email = props.email;
+     const setEmail = props.setEmail;
+     const local = props.local;
   //useEffect(()=>{
   //checkLoginStatus();
 
@@ -49,19 +54,19 @@ const psss = (data) =>{
                 axios.post("http://52.194.229.247:8000/cores/token/obtain/",
             {
                 // ここのpassword_confirmationフィールドも削除
-                    username: props.username,
-                    email: props.email,
-                    password: props.password
+                    username: username,
+                    email: email,
+                    password: password
 
             },
             { withCredentials: true }
         ).then(response => {
-            props.handleLogin()//
+            handleLogin()//
             //console.log(response)//
             console.log(response)
             if (response.statusText === "OK") {
-                 props.handleSuccessfulAuthentication(response.data)
-                 props.local()
+                 handleSuccessfulAuthentication(response.data)
+                 local()
                  console.log(response)
             }
         }).catch(error => {
@@ -84,21 +89,21 @@ const psss = (data) =>{
                     name="email"
                     placeholder="E-mail"
                     value={props.email}
-                    onChange={event=>props.setEmail(event.target.value)}
+                    onChange={event=>setEmail(event.target.value)}
                 />
                 <input
                     type="password"
                     name="password"
                     placeholder="Password"
                     value={props.password}
-                    onChange={event=>props.setPassword(event.target.value)}
+                    onChange={event=>setPassword(event.target.value)}
                 />
                 <input
                     type="username"
                     name="username"
                     placeholder="Username"
                     value={props.username}
-                    onChange={event=>props.setUsername(event.target.value)}
+                    onChange={event=>setUsername(event.target.value)}
                 />
 
                 <button className="button" type="submit">Login</button>
