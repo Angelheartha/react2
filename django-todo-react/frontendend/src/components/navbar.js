@@ -450,11 +450,32 @@ const Act = (props) => {
             <div className="site">
 
                  <nav className="bottonss">
-                    <Link legacyBehavior href="/" className="nav-linkk" >
+                    <Link legacyBehavior
+                    href={{
+                    pathname :"/" ,
+                    query:{handleLogin:handleLogin,handleLogout:handleLogout,loggedInStatus:loggedInStatus}
+                    }} className="nav-linkk" >
                      <a className="nav-linkk">Home</a>
                     </Link>
 
-                    <Link legacyBehavior href="/login/" className="nav-linkk" >
+                    <Link legacyBehavior
+                    href={{
+                    pathname: "/login/" ,
+                    query: {
+                    handleSuccessfulAuthentication:handleSuccessfulAuthentication,
+                    handleLogin:handleLogin,
+                    //err:err,
+                    //emm:emm,
+                    //pss:pss,
+                    username:username,
+                    setUsername:setUsername,
+                    password:password,
+                    setPassword:setPassword,
+                    email:email,
+                    setEmail:setEmail,
+                    local:local
+                    }
+                    }} className="nav-linkk" >
                      <a className="nav-linkk">Login</a>
                     </Link>
 
