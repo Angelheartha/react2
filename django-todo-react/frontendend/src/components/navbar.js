@@ -3,10 +3,10 @@ import React, {useEffect, useReducer } from 'react'
 import { BrowserRouter, Router, Route, Routes} from "react-router-dom";
 import Link from 'next/link'
 import { useNavigate } from "react-router-dom";
-import Login from "./login";
-import Signup from "./signup";
-import Home from "./home";
-import Dashboard from "./Dashboard";
+import Login from "../pages/login";
+import Signup from "../pages/signup";
+import Home from "../pages/home";
+import Dashboard from "../pages/Dashboard";
 import {useState} from "react";
 import axios from 'axios';
 //import axiosInstance from "/utils/axiosApi";
@@ -467,66 +467,10 @@ const Act = (props) => {
                     <button className={"nav-bot"} onClick={handleLogout}>Logout</button>
                  </nav>
 
-
-
-
-
-
-                 <div className="golinks">
-
-                   <Routes>
-                        <Route exact path={"/login/"}
-                        element={
-                        //<Login/>
-                        <Login handleSuccessfulAuthentication={handleSuccessfulAuthentication} handleLogin={handleLogin} //err={err} emm={emm} pss={pss}
-                        username={username} setUsername={setUsername} password={password} setPassword={setPassword} email={email} setEmail={setEmail} local={local}/>
-                        }
-                        />
-
-
-                   <Route exact path={"/signup/"}
-                        element={
-                        <Signup handleSuccessfulAuthentication={handleSuccessfulAuthentication} handleLogin={handleLogin}
-                        username={username} setUsername={setUsername} password={password} setPassword={setPassword} email={email} setEmail={setEmail} local={local}/>
-                        }
-                        />
-
-
-
-
-                   <Route
-                          exact path={"/"}
-                          element={
-                          <Home handleLogin={handleLogin} handleLogout={handleLogout} loggedInStatus={loggedInStatus} />
-                          }
-                          />
-
-
-
-                   <Route
-                          exact path={"/Dashboard/"}
-                          element={
-                          <Dashboard  loggedInStatus={loggedInStatus} />
-                          }
-                          />
-
-
-
-                   </Routes>
-
-
-                 </div>
-
-
             </div>
-
-
-
-
-
-
-                       // <Login handleSuccessfulAuthentication={handleSuccessfulAuthentication} handleLogin={handleLogin} //err={err} emm={emm} pss={pss}
+//<Login handleSuccessfulAuthentication={handleSuccessfulAuthentication} handleLogin={handleLogin} //err={err} emm={emm} pss={pss}
                       //  username={username} setUsername={setUsername} password={password} setPassword={setPassword} email={email} setEmail={setEmail} local={local}/>
+              //   <Home handleLogin={handleLogin} handleLogout={handleLogout} loggedInStatus={loggedInStatus} />
 
 
 
@@ -538,7 +482,7 @@ const Act = (props) => {
                       //  />
 
 
-                      //    <Home handleLogin={handleLogin} handleLogout={handleLogout} loggedInStatus={loggedInStatus} />
+
 
 
 
@@ -548,10 +492,6 @@ const Act = (props) => {
                         //  <Dashboard  loggedInStatus={loggedInStatus} />
                         //  }
                         //  />
-
-
-
-
 
 
 

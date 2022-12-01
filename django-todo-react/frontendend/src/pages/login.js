@@ -3,7 +3,7 @@ import { useState,useEffect} from "react";
 import axios from 'axios'
 //import axiosInstance from "/utils/axiosApi";
 //import { useNavigate } from "react-router-dom";
-import App from "./navbar";
+import App from "../components/navbar";
 import Link from 'next/link';
 
 // Login関数コンポーネントへ書き換え
@@ -88,21 +88,21 @@ const psss = (data) =>{
                     type="email"
                     name="email"
                     placeholder="E-mail"
-                    value={props.email}
+                    value={email}
                     onChange={event=>setEmail(event.target.value)}
                 />
                 <input
                     type="password"
                     name="password"
                     placeholder="Password"
-                    value={props.password}
+                    value={password}
                     onChange={event=>setPassword(event.target.value)}
                 />
                 <input
                     type="username"
                     name="username"
                     placeholder="Username"
-                    value={props.username}
+                    value={username}
                     onChange={event=>setUsername(event.target.value)}
                 />
 

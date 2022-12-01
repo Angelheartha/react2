@@ -1,4 +1,4 @@
-import App from "./navbar";
+import App from "../components/navbar";
 import React, { Component} from "react";
 import { BrowserRouter, Router, Route, Routes, Link, useLocation} from "react-router-dom";
 import Login from "./login";
@@ -6,7 +6,7 @@ import Signup from "./signup";
 import Home from "./home";
 import { useState,useEffect} from "react";
 //import axiosInstance from "/utils/axiosApi";
-import Modal from "./Modal";
+import Modal from "../components/Modal";
 import axios from "axios";
 import { useAlert } from 'react-alert'
 
@@ -27,7 +27,7 @@ useEffect(()=>{
   const [activeItem, setActiveItem] = useState({title: "", description: "", completed: false });
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [description,setDescription] = useState("");
-  const alert = useAlert()
+  //const alert = useAlert()
   const [input, setInput]=useState("");
   const [textarea, setTextarea]=useState("");
   const [loggedInStatus, setLoggedInStatus]=useState("未ログイン");
