@@ -1,5 +1,5 @@
 import { Component} from "react";
-import React, {useEffect, useReducer } from 'react'
+import React, {useEffect, useReducer, useContext, createContext } from 'react'
 import { BrowserRouter, Router, Route, Routes} from "react-router-dom";
 import Link from 'next/link'
 import { useNavigate } from "react-router-dom";
@@ -12,6 +12,11 @@ import axios from 'axios';
 //import axiosInstance from "/utils/axiosApi";
 import Modal from "./Modal";
 import { useAlert } from 'react-alert'
+
+//import axiosInstance from "/utils/axiosApi";
+//import { useNavigate } from "react-router-dom";
+import App from "../components/navbar";
+import {LoginStatusContext} from '../pages/_app';
 
 
 
@@ -29,6 +34,11 @@ const Navbar = () => {
   const [input, setInput]=useState("");
   const [textarea, setTextarea]=useState("");
   const [loggedInStatus, setLoggedInStatus]=useState("未ログイン");
+
+   //const {username,setUsername } = useContext(LoginStatusContext);
+  // const {password, setPassword } = useContext(LoginStatusContext);
+  // const {email, setEmail } = useContext(LoginStatusContext);
+
   const[email, setEmail] = useState("")
   const[password, setPassword] = useState("")
   const[username, setUsername] = useState("")

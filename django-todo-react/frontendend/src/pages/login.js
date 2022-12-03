@@ -1,31 +1,39 @@
-import React, {user} from 'react'
-import { useState,useEffect} from "react";
+import {user} from 'react'
+//import { useState,} from "react";
+import React , {useContext, useState, createContext, useEffect} from 'react';
 import axios from 'axios'
 //import axiosInstance from "/utils/axiosApi";
 //import { useNavigate } from "react-router-dom";
 import App from "../components/navbar";
 import Link from 'next/link';
+import {LoginStatusContext} from '../pages/_app';
+
 
 // Login関数コンポーネントへ書き換え
-export default function Login(props) {
+export default function Login() {
     // password_confirmationフィールドを削除
      //const [email, setEmail] = useState("")
      //const [password, setPassword] = useState("")
      //const [username, setUsername] = useState("")
      //const navigate = useNavigate()
-     const handleSuccessfulAuthentication = props.handleSuccessfulAuthentication;
-     const handleLogin = props.handleLogin;
-     const username = props.username;
-     const setUsername = props.setUsername;
-     const password = props.password;
-     const setPassword = props.setPassword;
-     const email = props.email;
-     const setEmail = props.setEmail;
-     const local = props.local;
+
+
+
+     const {handleSuccessfulAuthentication} = useContext(LoginStatusContext);
+     //const handleLogin = props.handleLogin;
+     //const local = props.local;
+     const {username,setUsername } = useContext(LoginStatusContext);
+     const {password, setPassword } = useContext(LoginStatusContext);
+     const {email, setEmail } = useContext(LoginStatusContext);
+     const {loggedInStatus, setLoggedInStatus } = useContext(LoginStatusContext);
   //useEffect(()=>{
   //checkLoginStatus();
 
   //},[])
+
+  const handleLogin = () =>{
+  setLoggedInStatus("ログインなう");
+  }
 
 
 
@@ -50,10 +58,8 @@ const psss = (data) =>{
 
 
     const handleSubmit = (event) => {
-        // 通信先のURLを/loginに書き換え
                 axios.post("http://52.194.229.247:8000/cores/token/obtain/",
             {
-                // ここのpassword_confirmationフィールドも削除
                     username: username,
                     email: email,
                     password: password

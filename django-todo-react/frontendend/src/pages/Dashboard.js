@@ -11,6 +11,7 @@ import axios from "axios";
 import { useAlert } from 'react-alert'
 
 
+
 const Dashboard = (props) => {
 
 
@@ -178,7 +179,7 @@ const handleSubmit = (item, props) => {
 
 
   const Act = (props) => {
- const alert = useAlert()
+ //const alert = useAlert()
 
   return (
      <div id="overlay">
@@ -206,7 +207,7 @@ const handleSubmit = (item, props) => {
 
 
 const aalert = () => {
-  alert.success('your message is already sent!! i reply in 5 days bussine daysss');
+  //alert.success('your message is already sent!! i reply in 5 days bussine daysss');
   setInput([]);
   setTextarea([]);
   };

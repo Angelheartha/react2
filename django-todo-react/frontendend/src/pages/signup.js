@@ -1,42 +1,57 @@
-import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 //import axiosInstance from "/utils/axiosApi";
 import axios from 'axios';
+//import { useState,} from "react";
+import React , {useContext, useState, createContext, useEffect} from 'react';
+
+import App from "../components/navbar";
+import Link from 'next/link';
+import {LoginStatusContext} from '../pages/_app';
+
+
+
 
 const Signup = (props) => {
 
 
-   const[email, setEmail] = useState("")
+ //  const[email, setEmail] = useState("")
  //  const[password, setPassword] = useState("")
  //  const[username, setUsername] = useState("")
  //  const navigate = useNavigate()
+     const {handleSuccessfulAuthentication} = useContext(LoginStatusContext);
+     //const handleLogin = props.handleLogin;
+     //const local = props.local;
+     const {username,setUsername } = useContext(LoginStatusContext);
+     const {password, setPassword } = useContext(LoginStatusContext);
+     const {email, setEmail } = useContext(LoginStatusContext);
+     const {loggedInStatus, setLoggedInStatus } = useContext(LoginStatusContext);
 
 
 
-
-const handleSuccessfulAuthentication = (data) =>{
-        navigate("/Dashboard");
+//const handleSuccessfulAuthentication = (data) =>{
+//        navigate("/Dashboard");
        // props.handleLogin()
-
-
-   }
+ //  }
+     const handleLogin = () =>{
+     setLoggedInStatus("ログインなう");
+  }
 
 
 
    const handleSubmit = (event) => {
          axios.post('http://52.194.229.247:8000/cores/user/create/',
              {
-                            username: props.username,
-                            email: props.email,
-                            password:props.password
+                            username: username,
+                            email: email,
+                            password:password
             },
             {withCredentials:true}
             ).then(response=>{
-               props.handleLogin()
+               handleLogin()
                if(response.statusText === 'Created'){
                //console.log(response)
-               props.handleSuccessfulAuthentication(response);
-               props.local()
+               handleSuccessfulAuthentication(response);
+               local()
                console.log(response)
                }
 
@@ -58,22 +73,22 @@ const handleSuccessfulAuthentication = (data) =>{
                        type="email"
                        name="email"
                        placeholder="E-mail"
-                       value={props.email}
-                       onChange={event => props.setEmail(event.target.value)}
+                       value={email}
+                       onChange={event => setEmail(event.target.value)}
                     />
                     <input
                        type="password"
                        name="password"
                        placeholder="Password"
-                       value={props.password}
-                       onChange={event => props.setPassword(event.target.value)}
+                       value={password}
+                       onChange={event => setPassword(event.target.value)}
                     />
                     <input
                        type="username"
                        name="username"
                        placeholder="Username"
-                       value={props.username}
-                       onChange={event => props.setUsername(event.target.value)}
+                       value={username}
+                       onChange={event => setUsername(event.target.value)}
                     />
 
                    <button className="button" type="submit">Signup</button>
