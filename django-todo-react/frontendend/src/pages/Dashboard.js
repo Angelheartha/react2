@@ -9,7 +9,9 @@ import { useState,useEffect} from "react";
 import Modal from "../components/Modal";
 import axios from "axios";
 import { useAlert } from 'react-alert'
-
+//import '../styles/style.css';
+//import '../styles/App.css';
+//import 'bootstrap/dist/css/bootstrap.css';
 
 
 const Dashboard = (props) => {

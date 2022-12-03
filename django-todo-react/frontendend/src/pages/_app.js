@@ -1,6 +1,7 @@
 //import '../styles/globals.css';
 import '../styles/style.css';
 import '../styles/App.css';
+import '../styles/index.css';
 import 'bootstrap/dist/css/bootstrap.css';
 import {
   BrowserRouter as Router,

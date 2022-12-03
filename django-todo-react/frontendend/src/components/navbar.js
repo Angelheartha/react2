@@ -10,7 +10,7 @@ import Dashboard from "../pages/Dashboard";
 import {useState} from "react";
 import axios from 'axios';
 //import axiosInstance from "/utils/axiosApi";
-import Modal from "./Modal";
+import Modal from "../components/Modal";
 import { useAlert } from 'react-alert'
 
 //import axiosInstance from "/utils/axiosApi";
@@ -468,6 +468,7 @@ const Act = (props) => {
                      <a className="nav-linkk">Home</a>
                     </Link>
 
+
                     <Link legacyBehavior
                     href={{
                     pathname: "/login/" ,
@@ -489,9 +490,12 @@ const Act = (props) => {
                      <a className="nav-linkk">Login</a>
                     </Link>
 
+
                     <Link href="/signup/" className="nav-linkk" >
                     Signup
                     </Link>
+
+
                     <Link href="/Dashboard/" className="nav-linkk" >
                     Dashboard
                     </Link>
