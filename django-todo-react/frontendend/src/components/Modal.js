@@ -1,5 +1,4 @@
 // frontend/src/components/Modal.js
-
 import React, { Component } from "react";
 import {
   Button,
@@ -12,6 +11,11 @@ import {
   Input,
   Label
 } from "reactstrap";
+//import '../styles/style.css';
+//import '../styles/App.css';
+//import '../styles/index.css';
+//import 'bootstrap/dist/css/bootstrap.css';
+
 
 export default class CustomModal extends Component {
   constructor(props) {

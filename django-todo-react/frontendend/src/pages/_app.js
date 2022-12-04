@@ -1,7 +1,7 @@
 //import '../styles/globals.css';
-import '../styles/style.css';
-import '../styles/App.css';
-import '../styles/index.css';
+import '/src/styles/style.css';
+import '/src/styles/App.css';
+import '/src/styles/index.css';
 import 'bootstrap/dist/css/bootstrap.css';
 import {
   BrowserRouter as Router,
@@ -9,7 +9,6 @@ import {
   Route,
   useRoutes,
 } from "react-router-dom";
-
 import Navbar from "../components/navbar";
 //import { BrowserRouter} from 'react-router-dom';
 import React , {useState, createContext} from 'react';
@@ -21,7 +20,8 @@ import { useRouter } from 'next/router'
 
 export const LoginStatusContext = createContext();
 
-function MyApp({ Component, pageProps }) {
+
+export function MyApp ({ Component, pageProps }) {
  const [loggedInStatus, setLoggedInStatus]=useState("未ログイン");
  const [viewCompleted, setViewCompleted] = useState(false);
  const [todoList, setTodoList] = useState([]);
@@ -51,6 +51,7 @@ function MyApp({ Component, pageProps }) {
      <Navbar />
      <div className="golinks">
           <h1 className="message">You are always welcome!</h1>
+
       <LoginStatusContext.Provider
        value={{loggedInStatus,setLoggedInStatus,email,setEmail,username,setUsername,password,setPassword,handleSuccessfulAuthentication}}>
           <Component {...pageProps} />
