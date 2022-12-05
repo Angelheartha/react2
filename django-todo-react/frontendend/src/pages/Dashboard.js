@@ -19,10 +19,8 @@ import {LoginStatusContext} from '../pages/_app';
 const Dashboard = (props) => {
 
 
-useEffect(()=>{
-  refreshList();
 
-  },[])
+
 
   const [viewCompleted, setViewCompleted] = useState(false);
   const [todoList, setTodoList] = useState([]);
@@ -38,6 +36,84 @@ useEffect(()=>{
  // const [loggedInStatus, setLoggedInStatus]=useState("未ログイン");
   const {loggedInStatus, setLoggedInStatus } = useContext(LoginStatusContext);
  // const{checkLoginStatus} = useContext(LoginStatusContext);
+
+useEffect(()=>{
+  refreshList();
+checkLoginStatus();
+  //console.log(local())
+
+
+  },[])
+
+
+const handleLogin = () =>{
+  setLoggedInStatus("ログインなう");
+  }
+
+
+
+
+const checkLoginStatus = () => {
+   var getjson = localStorage.getItem('キー');
+   var objj = JSON.parse(getjson);
+   console.log(objj);
+        if(objj === null){
+        }else{
+         axios.post("http://127.0.0.1:8000/cores/token/refresh/" ,{
+                           username:objj.username,
+                              email:objj.email,
+                           password:objj.password,
+            },
+            { withCredentials: true }
+   ).then(response =>{
+          handleLogin()
+        if (response.data.refresh　&& loggedInStatus === "未ログイン") {
+          console.log("looo");
+          //setLoggedInStatus("未ログイン");
+         // setLoggedInStatus("ログインなう");
+          //setUser(response.data.user)
+        console.log("c");
+        }else if (!response.data.refresh　&& loggedInStatus === "ログインなう") {
+          setLoggedInStatus("未ログイン");
+         // console.log("yeath");
+          console.log("loloo");
+          //setUser({})
+        }
+      })
+      .catch(error => {
+        console.log("ログインエラー", error)
+    })
+
+        }
+}
+
+
+
+const local = () => {
+
+
+var array = []
+
+var crazy =  []
+
+var obj = {
+  'username': username,
+  'email': email,
+  'password':password
+};
+
+
+array.push(obj);
+var setjson = JSON.stringify(obj);
+localStorage.setItem('キー', setjson);
+
+
+}
+
+
+
+
+
 
 
 const whattodo = () => {
@@ -134,6 +210,7 @@ const toggle = () => {
   };
 
 
+
 const handleSubmit = (item, props) => {
     setModal(!modal);
 
@@ -147,7 +224,7 @@ const handleSubmit = (item, props) => {
        .post("http://127.0.0.1:8000/api/todos/", item)
        .then(() => refreshList());
 
-   //  alert.success('Well done!!!');
+   //  alert('Well done!!!');
 
   };
 
@@ -179,7 +256,8 @@ const handleSubmit = (item, props) => {
     axios
       .delete(`http://127.0.0.1:8000/api/todos/${item.id}/`)
       .then((res) => refreshList());
-    //alert.success('Bye-Bye');
+
+
   };
 
 

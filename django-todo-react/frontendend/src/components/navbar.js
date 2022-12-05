@@ -35,90 +35,22 @@ const Navbar = () => {
   const [input, setInput]=useState("");
   const [textarea, setTextarea]=useState("");
   const [loggedInStatus, setLoggedInStatus]=useState("未ログイン");
- //const {loggedInStatus, setLoggedInStatus} =useContext(LoginStatusContext);
- // const {username,setUsername } =
- // const {password, setPassword } = useContext(LoginStatusContext);
-// const {local } = useContext(LoginStatusContext);
- //const[email, setEmail] = useState("")
- //const[password, setPassword] = useState("")
-// const[username, setUsername] = useState("")
+//  const {handleLogout} = useContext(LoginStatusContext);
 
 
 
   useEffect(()=>{
-  //refreshList();
+
   //console.log(local())
-  checkLoginStatus();
+
 
   },[])
-
-const local = () => {
-
-
-var array = []
-
-var crazy =  []
-
-var obj = {
-  'username': username,
-  'email': email,
-  'password':password
-};
-
-
-array.push(obj);
-var setjson = JSON.stringify(obj);
-localStorage.setItem('キー', setjson);
-
-
-}
-
-
-
-
-
-const checkLoginStatus = () => {
-   var getjson = localStorage.getItem('キー');
-   var objj = JSON.parse(getjson);
-   console.log(objj);
-        if(objj === null){
-        }else{
-         axios.post("http://127.0.0.1:8000/cores/token/refresh/" ,{
-                           username:objj.username,
-                              email:objj.email,
-                           password:objj.password,
-            },
-            { withCredentials: true }
-   ).then(response =>{
-        console.log("b");
-        if (response.data.refresh　&& loggedInStatus === "未ログイン") {
-          console.log("looo");
-          setLoggedInStatus("未ログイン");
-         // setLoggedInStatus("ログインなう");
-          //setUser(response.data.user)
-        console.log("c");
-        }else if (!response.data.refresh　&& loggedInStatus === "ログインなう") {
-          setLoggedInStatus("未ログイン");
-         // console.log("yeath");
-          console.log("loloo");
-          //setUser({})
-        }
-      })
-      .catch(error => {
-        console.log("ログインエラー", error)
-    })
-
-        }
-}
-
-
-
 
 
 
 const handleLogout = () => {
-    setLoggedInStatus("未ログイン")
-    //setUser({})
+   setLoggedInStatus("未ログイン")
+  //  setUser({})
   }
 
 
@@ -169,7 +101,16 @@ const handleLogout = () => {
 
 
 const Act = (props) => {
-// const alert = useAlert()
+
+
+const alertt = () =>{
+window.setTimeout(function(){
+        alert('Bye-Bye');
+         },5000)
+
+}
+
+
 
   return (
      <div id="overlay">
@@ -182,7 +123,9 @@ const Act = (props) => {
           <textarea />
           <p>I am available at this moment!</p>
         <button onClick={props.onClick}>Close</button>
-        <button type="button" onClick={aalert}>
+        <button type="button" onClick={
+        alertt()
+        }>
         Submit
         </button>
 
@@ -195,10 +138,12 @@ const Act = (props) => {
   )
 }
 
-  const aalert = () => {
-  alert.success('your message is already sent!! i reply in 5 days bussine daysss');
-  setInput([]);
-  setTextarea([]);
+  var timerId;
+
+  const showBox = () => {
+  document.getElementById("temporaryBoX").style.display="block";
+  timerId = setTimeout(closeBox, 5000);
+  document.getElementById("btnShowBox").disabled=true;
   };
 
 
@@ -222,7 +167,7 @@ const Act = (props) => {
        .post("http://127.0.0.1:8000/api/todos/", item)
        .then(() => refreshList());
 
-     alert.success('Well done!!!');
+     alert('Well done!!!');
 
   };
 
@@ -230,7 +175,7 @@ const Act = (props) => {
     axios
       .delete(`http://127.0.0.1:8000/api/todos/${item.id}/`)
       .then((res) => refreshList());
-    alert.success('Bye-Bye');
+    alert('Bye-Bye');
   };
 
 
@@ -454,10 +399,12 @@ const Act = (props) => {
                     <Link legacyBehavior href="/Dashboard/" className="nav-linkk" >
                        <a className="nav-linkk">Dashboard</a>
                     </Link>
-                    <button className={"nav-bot"} onClick={handleLogout}>Logout</button>
+
                  </nav>
 
             </div>
+
+             // <button className={"nav-bot"} onClick={handleLogout}>Logout</button>
 //<Login handleSuccessfulAuthentication={handleSuccessfulAuthentication} handleLogin={handleLogin} //err={err} emm={emm} pss={pss}
                       //  username={username} setUsername={setUsername} password={password} setPassword={setPassword} email={email} setEmail={setEmail} local={local}/>
               //   <Home handleLogin={handleLogin} handleLogout={handleLogout} loggedInStatus={loggedInStatus} />

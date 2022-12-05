@@ -15,7 +15,7 @@ import React , {useContext, useState, createContext, useEffect} from 'react';
 //import React , {useState, createContext} from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/router'
-
+import axios from 'axios';
 
 
 
@@ -47,7 +47,6 @@ export function MyApp ({ Component, pageProps }) {
     setLoggedInStatus("未ログイン")
     //setUser({})
   }
-
 
 
 

@@ -38,11 +38,13 @@ a {
 
 
 .nav-linkk{
+    font-weight:600;
     color:white;
     decoration:none;
     border: 1px solid white;
     padding: 5px;
-    width:70px;
+    width:110px;
+    text-align:center;
 
 }
 
