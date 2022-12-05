@@ -38,7 +38,7 @@ export function MyApp ({ Component, pageProps }) {
  const[email, setEmail] = useState("")
  const[password, setPassword] = useState("")
  const[username, setUsername] = useState("")
-
+ //const [loggedInStatus, setLoggedInStatus]=useState("未ログイン");
 
 
 
@@ -47,6 +47,10 @@ export function MyApp ({ Component, pageProps }) {
     setLoggedInStatus("未ログイン")
     //setUser({})
   }
+
+
+
+
 
 
 

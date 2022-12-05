@@ -5,7 +5,10 @@ import App from "../components/navbar";
 import Link from 'next/link';
 import {LoginStatusContext} from '../pages/_app';
 import { useRouter } from 'next/router'
-import {local} from "../components/navbar";
+//import local from "../components/navbar";
+//import {username,setUsername } from '../pages/_app';
+//import {password, setPassword } from '../pages/_app';
+//import {email, setEmail }  from '../pages/_app';
 
 
 
@@ -16,6 +19,7 @@ export default function Login() {
      const {email, setEmail } = useContext(LoginStatusContext);
      const {loggedInStatus, setLoggedInStatus } = useContext(LoginStatusContext);
      const router = useRouter();
+   //  const {local } = useContext(LoginStatusContext);
      //const local = local();
 
   const handleLogin = () =>{
@@ -28,6 +32,29 @@ export default function Login() {
         router.replace("/Dashboard");
 
    }
+
+const local = () => {
+
+
+var array = []
+
+var crazy =  []
+
+var obj = {
+  'username': username,
+  'email': email,
+  'password':password
+};
+
+
+array.push(obj);
+var setjson = JSON.stringify(obj);
+localStorage.setItem('キー', setjson);
+
+
+}
+
+
 
 
 
@@ -62,10 +89,8 @@ const psss = (data) =>{
             //console.log(response)//
             console.log(response)
             if (response.statusText === "OK") {
-
-                 handleSuccessfulAuthentication();
+                 handleSuccessfulAuthentication(response.data);
                  local()
-
             }
         }).catch(error => {
             console.log("registration error", error)

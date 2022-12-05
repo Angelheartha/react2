@@ -1,6 +1,5 @@
 import { Component} from "react";
 import React, {useEffect, useReducer, useContext, createContext } from 'react'
-
 import { BrowserRouter, Router, Route, Routes} from "react-router-dom";
 import Link from 'next/link'
 import { useNavigate } from "react-router-dom";
@@ -13,13 +12,14 @@ import axios from 'axios';
 //import axiosInstance from "/utils/axiosApi";
 import Modal from "../components/Modal";
 import { useAlert } from 'react-alert'
-
-
 import {LoginStatusContext} from '../pages/_app';
-import {username,setUsername } from '../pages/_app';
-import {password, setPassword }  from '../pages/_app';
-import {email, setEmail }  from '../pages/_app';
-
+//import {username,setUsername } from '../pages/_app';
+//import {password, setPassword }  from '../pages/_app';
+//import { local }  from '../pages/_app';
+//import {username,setUsername } from '../pages/_app';
+//import {password, setPassword } from '../pages/_app';
+//import {email, setEmail }  from '../pages/_app';
+//import {loggedInStatus, setLoggedInStatus } from '../pages/_app';
 
 
 const Navbar = () => {
@@ -35,8 +35,13 @@ const Navbar = () => {
   const [input, setInput]=useState("");
   const [textarea, setTextarea]=useState("");
   const [loggedInStatus, setLoggedInStatus]=useState("未ログイン");
-
-
+ //const {loggedInStatus, setLoggedInStatus} =useContext(LoginStatusContext);
+ // const {username,setUsername } =
+ // const {password, setPassword } = useContext(LoginStatusContext);
+// const {local } = useContext(LoginStatusContext);
+ //const[email, setEmail] = useState("")
+ //const[password, setPassword] = useState("")
+// const[username, setUsername] = useState("")
 
 
 
@@ -46,10 +51,6 @@ const Navbar = () => {
   checkLoginStatus();
 
   },[])
-
-
-
-
 
 const local = () => {
 
@@ -75,11 +76,11 @@ localStorage.setItem('キー', setjson);
 
 
 
+
 const checkLoginStatus = () => {
    var getjson = localStorage.getItem('キー');
    var objj = JSON.parse(getjson);
-   console.log(objj)
-        console.log("a");
+   console.log(objj);
         if(objj === null){
         }else{
          axios.post("http://127.0.0.1:8000/cores/token/refresh/" ,{
@@ -92,11 +93,12 @@ const checkLoginStatus = () => {
         console.log("b");
         if (response.data.refresh　&& loggedInStatus === "未ログイン") {
           console.log("looo");
-          //console.log("yeath");
-          setLoggedInStatus("ログインなう")
+          setLoggedInStatus("未ログイン");
+         // setLoggedInStatus("ログインなう");
           //setUser(response.data.user)
+        console.log("c");
         }else if (!response.data.refresh　&& loggedInStatus === "ログインなう") {
-          setLoggedInStatus("未ログイン")
+          setLoggedInStatus("未ログイン");
          // console.log("yeath");
           console.log("loloo");
           //setUser({})
@@ -434,44 +436,23 @@ const Act = (props) => {
             <div className="site">
 
                  <nav className="bottonss">
-                    <Link legacyBehavior
-                    href={{
-                    pathname :"/" ,
-                    query:{handleLogin:handleLogin,handleLogout:handleLogout,loggedInStatus:loggedInStatus}
-                    }} className="nav-linkk" >
+                    <Link legacyBehavior href= "/" className="nav-linkk" >
                      <a className="nav-linkk">Home</a>
                     </Link>
 
 
-                    <Link legacyBehavior
-                    href={{
-                    pathname: "/login/" ,
-                    query: {
-                    handleSuccessfulAuthentication:handleSuccessfulAuthentication,
-                    handleLogin:handleLogin,
-                    //err:err,
-                    //emm:emm,
-                    //pss:pss,
-                    username:username,
-                    setUsername:setUsername,
-                    password:password,
-                    setPassword:setPassword,
-                    email:email,
-                    setEmail:setEmail,
-                    local:local
-                    }
-                    }} className="nav-linkk" >
+                    <Link legacyBehavior href= "/login/" className="nav-linkk" >
                      <a className="nav-linkk">Login</a>
                     </Link>
 
 
-                    <Link href="/signup/" className="nav-linkk" >
-                    Signup
+                    <Link legacyBehavior href="/signup/" className="nav-linkk" >
+                      <a className="nav-linkk">Signup</a>
                     </Link>
 
 
-                    <Link href="/Dashboard/" className="nav-linkk" >
-                    Dashboard
+                    <Link legacyBehavior href="/Dashboard/" className="nav-linkk" >
+                       <a className="nav-linkk">Dashboard</a>
                     </Link>
                     <button className={"nav-bot"} onClick={handleLogout}>Logout</button>
                  </nav>

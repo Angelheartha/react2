@@ -5,17 +5,21 @@ import App from "../components/navbar";
 import Link from 'next/link';
 import { useRouter } from 'next/router'
 import {LoginStatusContext} from '../pages/_app';
-import {local} from "../components/navbar";
-
+//import {local} from "../components/navbar";
+import {username,setUsername } from '../pages/_app';
+import {password, setPassword } from '../pages/_app';
+import {email, setEmail }  from '../pages/_app';
+//import local from  "../components/navbar";
 
 
 const Signup = (props) => {
 
 
-     const {username,setUsername } = useContext(LoginStatusContext);
-     const {password, setPassword } = useContext(LoginStatusContext);
-     const {email, setEmail } = useContext(LoginStatusContext);
+    const {username,setUsername } = useContext(LoginStatusContext);
+    const {password, setPassword } = useContext(LoginStatusContext);
+    const {email, setEmail } = useContext(LoginStatusContext);
      const {loggedInStatus, setLoggedInStatus } = useContext(LoginStatusContext);
+   //  const {local } = useContext(LoginStatusContext);
      const router = useRouter();
      //const local = local();
 
@@ -23,6 +27,33 @@ const handleSuccessfulAuthentication = () =>{
         router.replace("/Dashboard");
 
    }
+
+const local = () => {
+
+
+var array = []
+
+var crazy =  []
+
+var obj = {
+  'username': username,
+  'email': email,
+  'password':password
+};
+
+
+array.push(obj);
+var setjson = JSON.stringify(obj);
+localStorage.setItem('キー', setjson);
+
+
+}
+
+
+
+
+
+
 
 
      const handleLogin = () =>{
@@ -43,7 +74,7 @@ const handleSuccessfulAuthentication = () =>{
             ).then(response=>{
               handleLogin();
                if(response.statusText === 'Created'){
-               handleSuccessfulAuthentication();
+               handleSuccessfulAuthentication(response);
                local()
                console.log(response)
                }
