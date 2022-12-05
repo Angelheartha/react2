@@ -1,37 +1,30 @@
 import { useNavigate } from "react-router-dom";
-//import axiosInstance from "/utils/axiosApi";
 import axios from 'axios';
-//import { useState,} from "react";
 import React , {useContext, useState, createContext, useEffect} from 'react';
-
 import App from "../components/navbar";
 import Link from 'next/link';
+import { useRouter } from 'next/router'
 import {LoginStatusContext} from '../pages/_app';
-
+import {local} from "../components/navbar";
 
 
 
 const Signup = (props) => {
 
 
- //  const[email, setEmail] = useState("")
- //  const[password, setPassword] = useState("")
- //  const[username, setUsername] = useState("")
- //  const navigate = useNavigate()
-     const {handleSuccessfulAuthentication} = useContext(LoginStatusContext);
-     //const handleLogin = props.handleLogin;
-     //const local = props.local;
      const {username,setUsername } = useContext(LoginStatusContext);
      const {password, setPassword } = useContext(LoginStatusContext);
      const {email, setEmail } = useContext(LoginStatusContext);
      const {loggedInStatus, setLoggedInStatus } = useContext(LoginStatusContext);
+     const router = useRouter();
+     //const local = local();
+
+const handleSuccessfulAuthentication = () =>{
+        router.replace("/Dashboard");
+
+   }
 
 
-
-//const handleSuccessfulAuthentication = (data) =>{
-//        navigate("/Dashboard");
-       // props.handleLogin()
- //  }
      const handleLogin = () =>{
      setLoggedInStatus("ログインなう");
   }
@@ -39,7 +32,8 @@ const Signup = (props) => {
 
 
    const handleSubmit = (event) => {
-         axios.post('http://52.194.229.247:8000/cores/user/create/',
+         console.log("a")
+         axios.post('http://127.0.0.1:8000/cores/user/create/',
              {
                             username: username,
                             email: email,
@@ -47,14 +41,12 @@ const Signup = (props) => {
             },
             {withCredentials:true}
             ).then(response=>{
-               handleLogin()
+              handleLogin();
                if(response.statusText === 'Created'){
-               //console.log(response)
-               handleSuccessfulAuthentication(response);
+               handleSuccessfulAuthentication();
                local()
                console.log(response)
                }
-
             }).catch (error =>{
               console.log("registration error")
             })

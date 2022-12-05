@@ -1,46 +1,35 @@
 import {user} from 'react'
-//import { useState,} from "react";
 import React , {useContext, useState, createContext, useEffect} from 'react';
 import axios from 'axios'
-//import axiosInstance from "/utils/axiosApi";
-//import { useNavigate } from "react-router-dom";
 import App from "../components/navbar";
 import Link from 'next/link';
 import {LoginStatusContext} from '../pages/_app';
+import { useRouter } from 'next/router'
+import {local} from "../components/navbar";
 
 
-// Login関数コンポーネントへ書き換え
+
 export default function Login() {
-    // password_confirmationフィールドを削除
-     //const [email, setEmail] = useState("")
-     //const [password, setPassword] = useState("")
-     //const [username, setUsername] = useState("")
-     //const navigate = useNavigate()
 
-
-
-     const {handleSuccessfulAuthentication} = useContext(LoginStatusContext);
-     //const handleLogin = props.handleLogin;
-     //const local = props.local;
      const {username,setUsername } = useContext(LoginStatusContext);
      const {password, setPassword } = useContext(LoginStatusContext);
      const {email, setEmail } = useContext(LoginStatusContext);
      const {loggedInStatus, setLoggedInStatus } = useContext(LoginStatusContext);
-  //useEffect(()=>{
-  //checkLoginStatus();
-
-  //},[])
+     const router = useRouter();
+     //const local = local();
 
   const handleLogin = () =>{
   setLoggedInStatus("ログインなう");
   }
 
 
+  const handleSuccessfulAuthentication = () =>{
 
-//const handleSuccessfulAuthentication = (data) =>{
-//        navigate("/Dashboard");
-//        props.handleLogin()
-  //}
+        router.replace("/Dashboard");
+
+   }
+
+
 
 
 const errr = (data) =>{
@@ -58,7 +47,8 @@ const psss = (data) =>{
 
 
     const handleSubmit = (event) => {
-                axios.post("http://52.194.229.247:8000/cores/token/obtain/",
+     console.log("a")
+                axios.post("http://127.0.0.1:8000/cores/token/obtain/",
             {
                     username: username,
                     email: email,
@@ -67,13 +57,15 @@ const psss = (data) =>{
             },
             { withCredentials: true }
         ).then(response => {
+
             handleLogin()//
             //console.log(response)//
             console.log(response)
             if (response.statusText === "OK") {
-                 handleSuccessfulAuthentication(response.data)
+
+                 handleSuccessfulAuthentication();
                  local()
-                 console.log(response)
+
             }
         }).catch(error => {
             console.log("registration error", error)

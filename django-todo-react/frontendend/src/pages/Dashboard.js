@@ -1,16 +1,16 @@
 import App from "../components/navbar";
-import React, { Component} from "react";
+import React, { Component, useContext, useState, createContext, useEffect} from "react";
 import { BrowserRouter, Router, Route, Routes, Link, useLocation} from "react-router-dom";
 import Login from "./login";
 import Signup from "./signup";
-import Home from "./home";
-import { useState,useEffect} from "react";
+import Home from "./index";
 //import axiosInstance from "/utils/axiosApi";
 import Modal from "../components/Modal";
 import axios from "axios";
 import { useAlert } from 'react-alert'
-//import '../styles/App.css';
-//import 'bootstrap/dist/css/bootstrap.css';
+
+import { useRouter } from 'next/router'
+import {LoginStatusContext} from '../pages/_app';
 
 
 
@@ -35,8 +35,9 @@ useEffect(()=>{
   //const alert = useAlert()
   const [input, setInput]=useState("");
   const [textarea, setTextarea]=useState("");
-  const [loggedInStatus, setLoggedInStatus]=useState("未ログイン");
-
+ // const [loggedInStatus, setLoggedInStatus]=useState("未ログイン");
+  const {loggedInStatus, setLoggedInStatus } = useContext(LoginStatusContext);
+ // const{checkLoginStatus} = useContext(LoginStatusContext);
 
 
 const whattodo = () => {
@@ -138,22 +139,22 @@ const handleSubmit = (item, props) => {
 
         if (item.id) {
        axios
-         .put(`http://52.194.229.247:8000/api/todos/${item.id}/`, item)
+         .put(`http://127.0.0.1:8000/api/todos/${item.id}/`, item)
          .then(() => refreshList());
        return;
      }
      axios
-       .post("http://52.194.229.247:8000/api/todos/", item)
+       .post("http://127.0.0.1:8000/api/todos/", item)
        .then(() => refreshList());
 
-     alert.success('Well done!!!');
+   //  alert.success('Well done!!!');
 
   };
 
 
   const refreshList = (props) => {
     axios
-      .get("http://52.194.229.247:8000/api/todos/")
+      .get("http://127.0.0.1:8000/api/todos/")
       .then((res) => setTodoList(res.data))
       .catch((err) => console.log(err));
   };
@@ -176,9 +177,9 @@ const handleSubmit = (item, props) => {
 
   const handleDelete = (item,props) => {
     axios
-      .delete(`http://52.194.229.247:8000/api/todos/${item.id}/`)
+      .delete(`http://127.0.0.1:8000/api/todos/${item.id}/`)
       .then((res) => refreshList());
-    alert.success('Bye-Bye');
+    //alert.success('Bye-Bye');
   };
 
 
@@ -220,7 +221,7 @@ const aalert = () => {
   return(
    <div>
      <h1>Dashboard</h1>
-     <h2>ログイン状態:{props.loggedInStatus}</h2>
+     <h2>ログイン状態:{loggedInStatus}</h2>
 
 
      <main className="container">

@@ -1,11 +1,12 @@
 import { Component} from "react";
 import React, {useEffect, useReducer, useContext, createContext } from 'react'
+
 import { BrowserRouter, Router, Route, Routes} from "react-router-dom";
 import Link from 'next/link'
 import { useNavigate } from "react-router-dom";
 import Login from "../pages/login";
 import Signup from "../pages/signup";
-import Home from "../pages/home";
+import Home from "../pages/index";
 import Dashboard from "../pages/Dashboard";
 import {useState} from "react";
 import axios from 'axios';
@@ -13,11 +14,11 @@ import axios from 'axios';
 import Modal from "../components/Modal";
 import { useAlert } from 'react-alert'
 
-//import axiosInstance from "/utils/axiosApi";
-//import { useNavigate } from "react-router-dom";
-import App from "../components/navbar";
-import {LoginStatusContext} from '../pages/_app';
 
+import {LoginStatusContext} from '../pages/_app';
+import {username,setUsername } from '../pages/_app';
+import {password, setPassword }  from '../pages/_app';
+import {email, setEmail }  from '../pages/_app';
 
 
 
@@ -35,20 +36,7 @@ const Navbar = () => {
   const [textarea, setTextarea]=useState("");
   const [loggedInStatus, setLoggedInStatus]=useState("未ログイン");
 
-   //const {username,setUsername } = useContext(LoginStatusContext);
-  // const {password, setPassword } = useContext(LoginStatusContext);
-  // const {email, setEmail } = useContext(LoginStatusContext);
 
-  const[email, setEmail] = useState("")
-  const[password, setPassword] = useState("")
-  const[username, setUsername] = useState("")
-  //const [user, setUser]=useState({});//
-//  const navigate = useNavigate()//
-
-
-
-
-//console.log(see)
 
 
 
@@ -61,17 +49,6 @@ const Navbar = () => {
 
 
 
-  //  useEffect(() => {
-
-
-   //checkLoginStatus()
-  //})
-
-
-//var data[setEmail,setPassword,setUsername]
-//cat = localStorage.setItem('key', data);
-//var cat = localStorage.getItem("key");
-//console.log(cat);
 
 
 const local = () => {
@@ -82,24 +59,17 @@ var array = []
 var crazy =  []
 
 var obj = {
-  //username:username,
-  //email:email,
-  //password:password,
   'username': username,
   'email': email,
   'password':password
 };
+
 
 array.push(obj);
 var setjson = JSON.stringify(obj);
 localStorage.setItem('キー', setjson);
 
 
-//var getjson = localStorage.getItem('キー');
-//var objj = JSON.parse(getjson);
-
-//var pp = crazy.push(objj)
-//console.log(pp)
 }
 
 
@@ -109,16 +79,17 @@ const checkLoginStatus = () => {
    var getjson = localStorage.getItem('キー');
    var objj = JSON.parse(getjson);
    console.log(objj)
+        console.log("a");
         if(objj === null){
-         console.log("yeath");
         }else{
-         axios.post("http://52.194.229.247:8000/cores/token/refresh/" ,{
+         axios.post("http://127.0.0.1:8000/cores/token/refresh/" ,{
                            username:objj.username,
                               email:objj.email,
                            password:objj.password,
             },
             { withCredentials: true }
    ).then(response =>{
+        console.log("b");
         if (response.data.refresh　&& loggedInStatus === "未ログイン") {
           console.log("looo");
           //console.log("yeath");
@@ -137,6 +108,9 @@ const checkLoginStatus = () => {
 
         }
 }
+
+
+
 
 
 
@@ -185,7 +159,7 @@ const handleLogout = () => {
 
   const refreshList = (props) => {
     axios
-      .get("http://52.194.229.247:8000/api/todos/")
+      .get("http://127.0.0.1:8000/api/todos/")
       .then((res) => setTodoList(res.data))
       .catch((err) => console.log(err));
   };
@@ -238,12 +212,12 @@ const Act = (props) => {
 
         if (item.id) {
        axios
-         .put(`http://52.194.229.247:8000/api/todos/${item.id}/`, item)
+         .put(`http://127.0.0.1:8000/api/todos/${item.id}/`, item)
          .then(() => refreshList());
        return;
      }
      axios
-       .post("http://52.194.229.247:8000/api/todos/", item)
+       .post("http://127.0.0.1:8000/api/todos/", item)
        .then(() => refreshList());
 
      alert.success('Well done!!!');
@@ -252,7 +226,7 @@ const Act = (props) => {
 
    const handleDelete = (item,props) => {
     axios
-      .delete(`http://52.194.229.247:8000/api/todos/${item.id}/`)
+      .delete(`http://127.0.0.1:8000/api/todos/${item.id}/`)
       .then((res) => refreshList());
     alert.success('Bye-Bye');
   };
