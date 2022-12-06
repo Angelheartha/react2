@@ -1,7 +1,4 @@
 import '../styles/globals.css';
-//import '/src/styles/style.css';
-//import '/src/styles/App.css';
-//import '/src/styles/index.css';
 import 'bootstrap/dist/css/bootstrap.css';
 import {
   BrowserRouter as Router,
@@ -10,13 +7,13 @@ import {
   useRoutes,
 } from "react-router-dom";
 import Navbar from "../components/navbar";
-//import { BrowserRouter} from 'react-router-dom';
 import React , {useContext, useState, createContext, useEffect} from 'react';
-//import React , {useState, createContext} from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/router'
 import axios from 'axios';
-
+import { Nav }  from '../components/Nav';
+import { Alert } from '../components/Alert';
+import Head from 'next/head';
 
 
 export const LoginStatusContext = createContext();
@@ -41,8 +38,6 @@ export function MyApp ({ Component, pageProps }) {
  //const [loggedInStatus, setLoggedInStatus]=useState("未ログイン");
 
 
-
-
  const handleLogout = () => {
     setLoggedInStatus("未ログイン")
     //setUser({})
@@ -52,16 +47,23 @@ export function MyApp ({ Component, pageProps }) {
 
 
 
-
-
   return (
+
+
     <div id="root">
+
+        <Head>
+                <title>Next.js - Alert (Toaster) Notifications</title>
+                <link href="//netdna.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet" />
+        </Head>
+
      <Navbar />
      <div className="golinks">
           <h1 className="message">You are always welcome!</h1>
 
       <LoginStatusContext.Provider
        value={{loggedInStatus,setLoggedInStatus,email,setEmail,username,setUsername,password,setPassword,handleLogout}}>
+          <Alert />
           <Component {...pageProps} />
       </LoginStatusContext.Provider>
      </div>

@@ -7,11 +7,12 @@ import Home from "./index";
 //import axiosInstance from "/utils/axiosApi";
 import Modal from "../components/Modal";
 import axios from "axios";
-import { useAlert } from 'react-alert'
+//import { useAlert } from 'react-alert'
 
 import { useRouter } from 'next/router'
 import {LoginStatusContext} from '../pages/_app';
 
+import { alertService } from '../components/alert.Service.js';
 
 
 
@@ -37,6 +38,20 @@ const Dashboard = (props) => {
   const {loggedInStatus, setLoggedInStatus } = useContext(LoginStatusContext);
  // const{checkLoginStatus} = useContext(LoginStatusContext);
  //  const id = setTimeout;
+
+    const [options, setOptions] = useState({
+        autoClose: true,
+        keepAfterRouteChange: true,
+
+    });
+
+    const handleOptionChange = (e) => {
+        const { name, checked } = e.target;
+        setOptions(options => ({ ...options, [name]: checked }));
+    }
+
+
+
 
 
 useEffect(()=>{
@@ -227,8 +242,7 @@ const handleSubmit = (item, props) => {
        .then(() => refreshList());
 
    //  alert('Well done!!!');
-
-
+   alertService.success('Success!!', options)
 
   };
 
@@ -260,7 +274,7 @@ const handleSubmit = (item, props) => {
     axios
       .delete(`http://127.0.0.1:8000/api/todos/${item.id}/`)
       .then((res) => refreshList());
-
+     alertService.success('Success!!', options)
 
   };
 

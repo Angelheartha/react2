@@ -11,15 +11,10 @@ import {useState} from "react";
 import axios from 'axios';
 //import axiosInstance from "/utils/axiosApi";
 import Modal from "../components/Modal";
-import { useAlert } from 'react-alert'
+//import { useAlert } from 'react-alert'
 import {LoginStatusContext} from '../pages/_app';
-//import {username,setUsername } from '../pages/_app';
-//import {password, setPassword }  from '../pages/_app';
-//import { local }  from '../pages/_app';
-//import {username,setUsername } from '../pages/_app';
-//import {password, setPassword } from '../pages/_app';
-//import {email, setEmail }  from '../pages/_app';
-//import {loggedInStatus, setLoggedInStatus } from '../pages/_app';
+
+import { alertService } from '../components/alert.Service.js';
 
 
 const Navbar = () => {
@@ -103,12 +98,19 @@ const handleLogout = () => {
 const Act = (props) => {
 
 
-const alertt = () =>{
-window.setTimeout(function(){
-        alert('Bye-Bye');
-         },5000)
 
-}
+
+
+
+    const [options, setOptions] = useState({
+        autoClose: false,
+        keepAfterRouteChange: false
+    });
+
+    const handleOptionChange = (e) => {
+        const { name, checked } = e.target;
+        setOptions(options => ({ ...options, [name]: checked }));
+    }
 
 
 
@@ -123,9 +125,8 @@ window.setTimeout(function(){
           <textarea />
           <p>I am available at this moment!</p>
         <button onClick={props.onClick}>Close</button>
-        <button type="button" onClick={
-        alertt()
-        }>
+        <button className="btn btn-success m-1" type="button"
+       onClick={() => alertService.success('Success!!', options)} >
         Submit
         </button>
 
