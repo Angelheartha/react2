@@ -36,6 +36,8 @@ const Dashboard = (props) => {
  // const [loggedInStatus, setLoggedInStatus]=useState("未ログイン");
   const {loggedInStatus, setLoggedInStatus } = useContext(LoginStatusContext);
  // const{checkLoginStatus} = useContext(LoginStatusContext);
+ //  const id = setTimeout;
+
 
 useEffect(()=>{
   refreshList();
@@ -225,6 +227,8 @@ const handleSubmit = (item, props) => {
        .then(() => refreshList());
 
    //  alert('Well done!!!');
+
+
 
   };
 
