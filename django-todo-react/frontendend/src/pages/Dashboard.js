@@ -293,7 +293,7 @@ const handleSubmit = (item, props) => {
           <textarea />
           <p>I am available at this moment!</p>
         <button onClick={props.onClick}>Close</button>
-        <button type="button" onClick={aalert}>
+        <button type="button" onClick={ aalert }>
         Submit
         </button>
 
@@ -309,8 +309,9 @@ const handleSubmit = (item, props) => {
 
 const aalert = () => {
   //alert.success('your message is already sent!! i reply in 5 days bussine daysss');
-  setInput([]);
-  setTextarea([]);
+    alertService.success('Success!!', options)
+    setInput([]);
+    setTextarea([]);
   };
 
 
