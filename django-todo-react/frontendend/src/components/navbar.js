@@ -420,22 +420,11 @@ const Act = (props) => {
                       //  />
 
 
-
-
-
-
-
                         //<link href="/Dashboard/"
                         //  element={
                         //  <Dashboard  loggedInStatus={loggedInStatus} />
                         //  }
                         //  />
-
-
-
-
-
-
 
         );
 }
