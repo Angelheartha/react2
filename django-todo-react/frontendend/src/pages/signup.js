@@ -91,28 +91,29 @@ localStorage.setItem('キー', setjson);
                 <p>Signup</p>
 
                 <form className="form" onSubmit={handleSubmit}>
-                    <input
+                <div className="login-container" >
+                    <input className="login-input"
                        type="email"
                        name="email"
                        placeholder="E-mail"
                        value={email}
                        onChange={event => setEmail(event.target.value)}
                     />
-                    <input
+                    <input className="login-input"
                        type="password"
                        name="password"
                        placeholder="Password"
                        value={password}
                        onChange={event => setPassword(event.target.value)}
                     />
-                    <input
+                    <input className="login-input"
                        type="username"
                        name="username"
                        placeholder="Username"
                        value={username}
                        onChange={event => setUsername(event.target.value)}
                     />
-
+                </div>
                    <button className="button" type="submit">Signup</button>
                 </form>
             </div>
