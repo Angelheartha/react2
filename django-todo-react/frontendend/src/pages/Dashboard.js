@@ -76,7 +76,7 @@ const checkLoginStatus = () => {
    console.log(objj);
         if(objj === null){
         }else{
-         axios.post("http://127.0.0.1:8000/cores/token/refresh/" ,{
+         axios.post("http://52.196.20.77:8000/cores/token/refresh/" ,{
                            username:objj.username,
                               email:objj.email,
                            password:objj.password,
@@ -233,12 +233,12 @@ const handleSubmit = (item, props) => {
 
         if (item.id) {
        axios
-         .put(`http://127.0.0.1:8000/api/todos/${item.id}/`, item)
+         .put(`http://52.196.20.77:8000/api/todos/${item.id}/`, item)
          .then(() => refreshList());
        return;
      }
      axios
-       .post("http://127.0.0.1:8000/api/todos/", item)
+       .post("http://52.196.20.77:8000/api/todos/", item)
        .then(() => refreshList());
 
    //  alert('Well done!!!');
@@ -249,7 +249,7 @@ const handleSubmit = (item, props) => {
 
   const refreshList = (props) => {
     axios
-      .get("http://127.0.0.1:8000/api/todos/")
+      .get("http://52.196.20.77:8000/api/todos/")
       .then((res) => setTodoList(res.data))
       .catch((err) => console.log(err));
   };
@@ -272,7 +272,7 @@ const handleSubmit = (item, props) => {
 
   const handleDelete = (item,props) => {
     axios
-      .delete(`http://127.0.0.1:8000/api/todos/${item.id}/`)
+      .delete(`http://52.196.20.77:8000/api/todos/${item.id}/`)
       .then((res) => refreshList());
      alertService.success('Success!!', options)
 

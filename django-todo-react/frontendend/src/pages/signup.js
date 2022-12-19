@@ -64,7 +64,7 @@ localStorage.setItem('キー', setjson);
 
    const handleSubmit = (event) => {
          console.log("a")
-         axios.post('http://127.0.0.1:8000/cores/user/create/',
+         axios.post('http://52.196.20.77:8000/cores/user/create/',
              {
                             username: username,
                             email: email,

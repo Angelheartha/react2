@@ -144,7 +144,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 CORS_ALLOW_CREDENTIALS = True
 
 CORS_ORIGIN_WHITELIST = [
-    'http://52.194.229.247:8000'
+    'http://52.196.20.77:8000'
 ]
 
 REST_FRAMEWORK = {
@@ -187,4 +187,4 @@ SECURE_CROSS_ORIGIN_OPENER_POLICY = None
 
 SESSION_COOKIE_SECURE = False
 
-# Access_Control_Allow_Origin = 'http://52.194.229.247:8000'
+# Access_Control_Allow_Origin = 'http://52.196.20.77:8000'
