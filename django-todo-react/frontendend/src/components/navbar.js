@@ -88,7 +88,7 @@ const handleLogout = () => {
 
   const refreshList = (props) => {
     axios
-      .get("http://127.0.0.1:8000/api/todos/")
+      .get("http://52.196.20.77:8000/api/todos/")
       .then((res) => setTodoList(res.data))
       .catch((err) => console.log(err));
   };
@@ -160,12 +160,12 @@ const Act = (props) => {
 
         if (item.id) {
        axios
-         .put(`http://127.0.0.1:8000/api/todos/${item.id}/`, item)
+         .put(`http://52.196.20.77:8000/api/todos/${item.id}/`, item)
          .then(() => refreshList());
        return;
      }
      axios
-       .post("http://127.0.0.1:8000/api/todos/", item)
+       .post("http://52.196.20.77:8000/api/todos/", item)
        .then(() => refreshList());
 
      alert('Well done!!!');
@@ -174,7 +174,7 @@ const Act = (props) => {
 
    const handleDelete = (item,props) => {
     axios
-      .delete(`http://127.0.0.1:8000/api/todos/${item.id}/`)
+      .delete(`http://52.196.20.77:8000/api/todos/${item.id}/`)
       .then((res) => refreshList());
     alert('Bye-Bye');
   };
