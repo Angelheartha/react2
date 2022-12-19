@@ -88,7 +88,7 @@ localStorage.setItem('キー', setjson);
 
         return (
             <div>
-                <p>Signup</p>
+                <h1>Signup</h1>
 
                 <form className="form" onSubmit={handleSubmit}>
                 <div className="login-container" >

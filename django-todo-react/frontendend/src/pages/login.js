@@ -103,7 +103,7 @@ const psss = (data) =>{
     return (
         <div>
             {/* ログインに変更 */}
-            <p>Login</p>
+            <h1>Login</h1>
 
             {/* フォーム内のpassword_confrmation入力フィールド削除 */}
             <form className="form" onSubmit={handleSubmit}>
