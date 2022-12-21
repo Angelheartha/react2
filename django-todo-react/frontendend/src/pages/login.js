@@ -85,7 +85,7 @@ const psss = (data) =>{
             { withCredentials: true }
         ).then(response => {
 
-            handleLogin()//
+            setLoggedInStatus(username+"さん")//
             //console.log(response)//
             console.log(response)
             if (response.statusText === "OK") {

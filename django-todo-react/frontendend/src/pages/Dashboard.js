@@ -38,6 +38,9 @@ const Dashboard = (props) => {
   const {loggedInStatus, setLoggedInStatus } = useContext(LoginStatusContext);
  // const{checkLoginStatus} = useContext(LoginStatusContext);
  //  const id = setTimeout;
+  const {handleLogout} =useContext(LoginStatusContext);
+  const {username, setUsername} = useContext(LoginStatusContext);
+
 
     const [options, setOptions] = useState({
         autoClose: true,
@@ -83,11 +86,11 @@ const checkLoginStatus = () => {
             },
             { withCredentials: true }
    ).then(response =>{
-          handleLogin()
         if (response.data.refresh　&& loggedInStatus === "未ログイン") {
-          console.log("looo");
+         // handleLogin(objj.username)
+         setLoggedInStatus(objj.username+"さん");
           //setLoggedInStatus("未ログイン");
-         // setLoggedInStatus("ログインなう");
+        //  set LoggedInStatus("ログインなう");
           //setUser(response.data.user)
         console.log("c");
         }else if (!response.data.refresh　&& loggedInStatus === "ログインなう") {
@@ -315,16 +318,23 @@ const aalert = () => {
   };
 
 
+const handleLogoutClick = () => {
+                handleLogout()
+    };
+
+
   return(
    <div>
      <h1>Dashboard</h1>
-     <h2>ログイン状態:{loggedInStatus}</h2>
+
+<h2>ログイン状態:{loggedInStatus}</h2>
 
 
      <main className="container">
       <div className="nav-container">
 
-<div className="button3">
+
+        <div className="button3">
         <button
           className="navi white How btn btn-primary"
           onClick={howtodo}
@@ -346,11 +356,22 @@ const aalert = () => {
         >
           Contact
         </button>
-</div>
+
+        <button
+          className="navi contact11 btn btn-primary"
+          onClick={handleLogoutClick}
+        >
+         Logout
+         </button>
+      </div>
+
 
       {isModalOpen && <Act onClick={() => { closeModal() }} />}
       <p className="howtitle">{description}</p>
       <h1 className="text-uppercase text-center my-4">Memo</h1>
+
+
+
       <div className="row">
         <div className="col-md-6 col-sm-10 mx-auto p-0">
           <div className="card p-3">

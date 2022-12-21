@@ -72,7 +72,7 @@ localStorage.setItem('キー', setjson);
             },
             {withCredentials:true}
             ).then(response=>{
-              handleLogin();
+              setLoggedInStatus(username+"さん")
                if(response.statusText === 'Created'){
                handleSuccessfulAuthentication(response);
                local()

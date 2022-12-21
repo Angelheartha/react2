@@ -34,7 +34,7 @@ a {
 
 
 #root{
-    background-color:#3333FF;
+    background-color:#1e90ff;
     color:white;
     font-family: 'Noto Sans JP', sans-serif;
 }
@@ -108,9 +108,21 @@ height:7em;
 
 
 
-.navi{
+.button3 .navi{
 text-align:center;
-margin:0;
+margin:0 2px 0 2px;
+border:2px solid white;
+background-color:#1e90ff;
+}
+
+
+input[type="text"]{
+background-color:#f3f3f3;
+}
+
+
+.button3 .navi .contact11{
+with:1px;
 }
 
 .button3{
@@ -118,6 +130,8 @@ margin:0;
   flex-direction:row;
   justify-content:center;
 }
+
+
 
 .text-uppercase{
 margin:0 auto;

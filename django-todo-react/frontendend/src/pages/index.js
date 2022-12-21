@@ -4,7 +4,6 @@ import { useRouter } from 'next/router'
 import Link from 'next/link';
 import axios from 'axios';
 
-
 import {LoginStatusContext} from '../pages/_app';
 
 
@@ -23,11 +22,7 @@ const handleLogin = () =>{
 
 
 const handleLogoutClick = () => {
-        axios.get("http://52.196.20.77:8000", { withCredentials: true })
-            .then(response => {
                 handleLogout()
-                console.log("ll")
-            }).catch(error => console.log("ログアウトエラー", error))
     };
 
 

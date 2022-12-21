@@ -37,7 +37,7 @@ export default class CustomModal extends Component {
   render() {
     const { toggle, onSave } = this.props;
     return (
-      <Modal isOpen={true} toggle={toggle}>
+      <Modal  className="secreat" isOpen={true} toggle={toggle}>
         <ModalHeader toggle={toggle}> Todo Item </ModalHeader>
         <ModalBody>
           <Form>
