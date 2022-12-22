@@ -379,7 +379,42 @@ const Act = (props) => {
         return (
 
 
-            <div className="site">
+            <div className="site navbar navbar-expand-lg navbar-dark bg-blue">
+
+           <div className="header">
+             <button className="navbar-toggler"
+            type="button"
+            data-toggle="collapse"
+            data-target="#navbarToogleContent"
+            aria-controls="navbarToogleContent"
+            aria-expanded="false"
+            aria-label="Toggle navigation">
+             <span className="navbar-toggler-icon"></span>
+            </button>
+
+            <input type="checkbox" className="drawer-btn" />
+
+            <div className="header-nav">
+             <ul className="header-menu">
+              <li> <Link legacyBehavior href= "/"  >
+                      <a className="nav-linkk">Home</a>
+                    </Link></li>
+
+               <li> <Link legacyBehavior href= "/login/" className="nav-linkk" >
+                     <a className="nav-linkk">Login</a>
+                    </Link></li>
+
+                <li> <Link legacyBehavior href="/signup/" className="nav-linkk" >
+                      <a className="nav-linkk">Signup</a>
+                    </Link></li>
+
+                 <li><Link legacyBehavior href="/Dashboard/" className="nav-linkk" >
+                       <a className="nav-linkk">Dashboard</a>
+                    </Link></li>
+
+             </ul>
+            </div>
+            </div>
 
                  <nav className="bottonss">
                     <Link legacyBehavior href= "/" className="nav-linkk" >
