@@ -379,9 +379,9 @@ const Act = (props) => {
         return (
 
 
-            <div className="site navbar navbar-expand-lg navbar-dark bg-blue">
+            <div className="site ">
 
-           <div className="header">
+           <div className="header navbar navbar-expand-lg navbar-dark bg-blue">
              <button className="navbar-toggler"
             type="button"
             data-toggle="collapse"
@@ -414,7 +414,10 @@ const Act = (props) => {
 
              </ul>
             </div>
+
             </div>
+
+
 
                  <nav className="bottonss">
                     <Link legacyBehavior href= "/" className="nav-linkk" >

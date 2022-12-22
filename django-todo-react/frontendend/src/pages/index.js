@@ -31,7 +31,7 @@ const handleLogoutClick = () => {
   return(
   <div>
     <h1>Home</h1>
-    <h2>ログイン状態:{loggedInStatus}</h2>
+    <h2 className="login-status">ログイン状態:{loggedInStatus}</h2>
 
     <button onClick={handleLogoutClick}>Logout</button>
 
