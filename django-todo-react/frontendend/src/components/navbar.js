@@ -36,7 +36,6 @@ const Navbar = () => {
 
   useEffect(()=>{
 
-  //console.log(local())
 
 
   },[])
@@ -45,7 +44,7 @@ const Navbar = () => {
 
 const handleLogout = () => {
    setLoggedInStatus("未ログイン")
-  //  setUser({})
+
   }
 
 
@@ -58,18 +57,7 @@ const handleLogout = () => {
   }
 
 
- // const err = () =>{
- //   setUsername("")
- //   }
 
-
- // const emm = () =>{
- //  setEmail("")
- // }
-
- // const pss =() =>{
- //  setPassword("")
- // }
 
 
 
@@ -360,109 +348,75 @@ const Act = (props) => {
 
 
 
-    //const handleLogout = async () => {
-    //    try {
-    //        const response = await axiosInstance.post('/blacklist/', {
-    //            "refresh_token": localStorage.getItem("refresh_token")
-    //        });
-    //        localStorage.removeItem('access_token');
-    //        localStorage.removeItem('refresh_token');
-    //        axiosInstance.defaults.headers['Authorization'] = null;
-    //        return response;
-    //    }
-    //    catch (e) {
-    //        console.log(e);
-    //    }
-    //};
 
 
         return (
+<div className='site'>
+         <header>
+    <div class="hamburger-menu">
+        <input type="checkbox" id="menu-btn-check"/>
+        <label for="menu-btn-check" class="menu-btn"><span></span></label>
+        <div class="menu-content">
+            <ul>
+                <li>
+                    <Link legacyBehavior href= "/" >
+                     <a>Home</a>
+                    </Link>
+                </li>
+                <li>
+                     <Link legacyBehavior href= "/login/" >
+                     <a>Login</a>
+                    </Link>
+                </li>
+                <li>
+                    <Link legacyBehavior href="/signup/" >
+                      <a>Signup</a>
+                    </Link>
+                </li>
+                <li>
+                     <Link legacyBehavior href="/Dashboard/" >
+                       <a>Dashboard</a>
+                    </Link>
+                </li>
+            </ul>
+        </div>
+    </div>
+</header>
 
 
-            <div className="site ">
 
-           <div className="header navbar navbar-expand-lg navbar-dark bg-blue">
-             <button className="navbar-toggler"
-            type="button"
-            data-toggle="collapse"
-            data-target="#navbarToogleContent"
-            aria-controls="navbarToogleContent"
-            aria-expanded="false"
-            aria-label="Toggle navigation">
-             <span className="navbar-toggler-icon"></span>
-            </button>
+
+
+
+           <div className="navbar-dark bg-blue">
 
             <input type="checkbox" className="drawer-btn" />
 
-            <div className="header-nav">
-             <ul className="header-menu">
-              <li> <Link legacyBehavior href= "/"  >
-                      <a className="nav-linkk">Home</a>
-                    </Link></li>
-
-               <li> <Link legacyBehavior href= "/login/" className="nav-linkk" >
-                     <a className="nav-linkk">Login</a>
-                    </Link></li>
-
-                <li> <Link legacyBehavior href="/signup/" className="nav-linkk" >
-                      <a className="nav-linkk">Signup</a>
-                    </Link></li>
-
-                 <li><Link legacyBehavior href="/Dashboard/" className="nav-linkk" >
-                       <a className="nav-linkk">Dashboard</a>
-                    </Link></li>
-
-             </ul>
-            </div>
-
-            </div>
-
-
-
                  <nav className="bottonss">
                     <Link legacyBehavior href= "/" className="nav-linkk" >
-                     <a className="nav-linkk">Home</a>
+                     <a className="jcc nav-linkk">Home</a>
                     </Link>
 
 
                     <Link legacyBehavior href= "/login/" className="nav-linkk" >
-                     <a className="nav-linkk">Login</a>
+                     <a className="jcc nav-linkk">Login</a>
                     </Link>
 
 
                     <Link legacyBehavior href="/signup/" className="nav-linkk" >
-                      <a className="nav-linkk">Signup</a>
+                      <a className="jcc nav-linkk">Signup</a>
                     </Link>
 
 
                     <Link legacyBehavior href="/Dashboard/" className="nav-linkk" >
-                       <a className="nav-linkk">Dashboard</a>
+                       <a className="jcc nav-linkk">Dashboard</a>
                     </Link>
 
                  </nav>
 
             </div>
 
-             // <button className={"nav-bot"} onClick={handleLogout}>Logout</button>
-//<Login handleSuccessfulAuthentication={handleSuccessfulAuthentication} handleLogin={handleLogin} //err={err} emm={emm} pss={pss}
-                      //  username={username} setUsername={setUsername} password={password} setPassword={setPassword} email={email} setEmail={setEmail} local={local}/>
-              //   <Home handleLogin={handleLogin} handleLogout={handleLogout} loggedInStatus={loggedInStatus} />
-
-
-
-                      //  <Link href="/signup/"
-                      //  element={
-                      //  <Signup handleSuccessfulAuthentication={handleSuccessfulAuthentication} handleLogin={handleLogin}
-                      //  username={username} setUsername={setUsername} password={password} setPassword={setPassword} email={email} setEmail={setEmail} local={local}/>
-                      //  }
-                      //  />
-
-
-                        //<link href="/Dashboard/"
-                        //  element={
-                        //  <Dashboard  loggedInStatus={loggedInStatus} />
-                        //  }
-                        //  />
+</div>
 
         );
 }

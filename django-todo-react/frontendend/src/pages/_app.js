@@ -1,4 +1,4 @@
-import '../styles/globals.css';
+import '/src/styles/globals.css';
 import 'bootstrap/dist/css/bootstrap.css';
 import {
   BrowserRouter as Router,
@@ -15,7 +15,6 @@ import { Nav }  from '../components/Nav';
 import { Alert } from '../components/Alert';
 import Head from 'next/head';
 
-
 export const LoginStatusContext = createContext();
 
 
@@ -30,11 +29,12 @@ export function MyApp ({ Component, pageProps }) {
  const [isModalOpen, setIsModalOpen] = useState(false);
  const [description,setDescription] = useState("");
  // const alert = useAlert()//
- const [input, setInput]=useState("");
- const [textarea, setTextarea]=useState("");
  const[email, setEmail] = useState("")
  const[password, setPassword] = useState("")
  const[username, setUsername] = useState("")
+ const [inputt, setInputt]=useState("");
+ const [textareaa, setTextareaa]=useState("");
+
  //const [loggedInStatus, setLoggedInStatus]=useState("未ログイン");
 
 
@@ -59,11 +59,10 @@ export function MyApp ({ Component, pageProps }) {
 
      <Navbar />
      <div className="golinks">
-          <h1 className="message">You are always welcome!</h1>
+          <h1 className="message">ようこそ!!</h1>
 
       <LoginStatusContext.Provider
-       value={{loggedInStatus,setLoggedInStatus,email,setEmail,username,setUsername,password,setPassword,handleLogout}}>
-          <Alert />
+       value={{loggedInStatus,setLoggedInStatus,email,setEmail,username,setUsername,password,setPassword,handleLogout,inputt,setInputt,textareaa,setTextareaa}}>          <Alert />
           <Component {...pageProps} />
       </LoginStatusContext.Provider>
      </div>

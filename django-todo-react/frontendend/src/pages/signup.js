@@ -63,7 +63,6 @@ localStorage.setItem('キー', setjson);
 
 
    const handleSubmit = (event) => {
-         console.log("a")
          axios.post('http://52.196.20.77:8000/cores/user/create/',
              {
                             username: username,
@@ -76,7 +75,6 @@ localStorage.setItem('キー', setjson);
                if(response.statusText === 'Created'){
                handleSuccessfulAuthentication(response);
                local()
-               console.log(response)
                }
             }).catch (error =>{
               console.log("registration error")

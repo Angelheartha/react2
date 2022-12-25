@@ -6,6 +6,7 @@ import Signup from "./signup";
 import Home from "./index";
 //import axiosInstance from "/utils/axiosApi";
 import Modal from "../components/Modal";
+import Act from ".//Act"
 import axios from "axios";
 //import { useAlert } from 'react-alert'
 
@@ -32,14 +33,16 @@ const Dashboard = (props) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [description,setDescription] = useState("");
   //const alert = useAlert()
-  const [input, setInput]=useState("");
-  const [textarea, setTextarea]=useState("");
+
+
  // const [loggedInStatus, setLoggedInStatus]=useState("未ログイン");
   const {loggedInStatus, setLoggedInStatus } = useContext(LoginStatusContext);
  // const{checkLoginStatus} = useContext(LoginStatusContext);
  //  const id = setTimeout;
   const {handleLogout} =useContext(LoginStatusContext);
   const {username, setUsername} = useContext(LoginStatusContext);
+  //const {text,setTextarea} = useContext(LoginStatusContext);
+  //const {input,setInput} = useContext(LoginStatusContext);
 
 
     const [options, setOptions] = useState({
@@ -76,7 +79,6 @@ const handleLogin = () =>{
 const checkLoginStatus = () => {
    var getjson = localStorage.getItem('キー');
    var objj = JSON.parse(getjson);
-   console.log(objj);
         if(objj === null){
         }else{
          axios.post("http://52.196.20.77:8000/cores/token/refresh/" ,{
@@ -89,15 +91,9 @@ const checkLoginStatus = () => {
         if (response.data.refresh　&& loggedInStatus === "未ログイン") {
          // handleLogin(objj.username)
          setLoggedInStatus(objj.username+"さん");
-          //setLoggedInStatus("未ログイン");
-        //  set LoggedInStatus("ログインなう");
-          //setUser(response.data.user)
-        console.log("c");
         }else if (!response.data.refresh　&& loggedInStatus === "ログインなう") {
           setLoggedInStatus("未ログイン");
-         // console.log("yeath");
-          console.log("loloo");
-          //setUser({})
+
         }
       })
       .catch(error => {
@@ -282,40 +278,8 @@ const handleSubmit = (item, props) => {
   };
 
 
-  const Act = (props) => {
- //const alert = useAlert()
-
-  return (
-     <div id="overlay">
-         <div id="modal" className="modall">
-      <div>
-        <form className="formtext" onSubmit={()=>{this.handleSubmit()}} >
-          <p>E-mail</p>
-          <input />
-          <p>Message</p>
-          <textarea />
-          <p>I am available at this moment!</p>
-        <button onClick={props.onClick}>Close</button>
-        <button type="button" onClick={ aalert }>
-        Submit
-        </button>
-
-        </form>
-
-      </div>
-    </div>
-     </div>
-
-  )
-}
 
 
-const aalert = () => {
-  //alert.success('your message is already sent!! i reply in 5 days bussine daysss');
-    alertService.success('Success!!', options)
-    setInput([]);
-    setTextarea([]);
-  };
 
 
 const handleLogoutClick = () => {
@@ -367,17 +331,18 @@ const handleLogoutClick = () => {
 
 
       {isModalOpen && <Act onClick={() => { closeModal() }} />}
+
       <p className="howtitle">{description}</p>
       <h1 className="text-uppercase text-center my-4">Memo</h1>
 
 
 
       <div className="row">
-        <div className="col-md-6 col-sm-10 mx-auto p-0">
+        <div className="rosa col-md-6 col-sm-10 mx-auto p-0">
           <div className="card p-3">
             <div className="mb-4">
               <button
-                className="btn btn-primary"
+                className="adds btn btn-danger"
                 onClick={createItem}
               >
                 Add

@@ -29,7 +29,9 @@ a {
 
 
 
-
+.row .rosa .card{
+background-color:#1e90ff;
+}
 
 
 
@@ -111,18 +113,19 @@ height:7em;
 text-align:center;
 margin:0 2px 0 2px;
 border:2px solid white;
-background-color:#1e90ff;
+
 }
 
 
-input[type="text"]{
-background-color:#f3f3f3;
+.login-container .login-input{
+background-color:white;
 }
 
 
-.button3 .navi .contact11{
-with:1px;
+.button3 .navi{
+transition:0.4s;
 }
+
 
 .button3{
   display:flex;
@@ -173,25 +176,169 @@ text-align:center;
   justify-content: space-between;
 }
 
-.navbar-toggler{
-display:none;
-}
 
 
-.header{
-display:none;
-}
-
-.header-nav{
-display:none;
-}
 
 .drawer-btn{
 display:none;
 }
 
+.jcc{
+transition:0.4s;
+text-decoration:none;
+
+}
+
+.jcc:hover{
+text-decoration:none;
+}
+
+.rosa .adds{
+transition:0.5s;
+}
+
+
+.hamburger-menu{
+display:none;
+}
 
 @media(max-width:420px){
+
+.hamburger-menu{
+display:block;
+}
+
+
+
+.menu-btn {
+    position: fixed;
+    top: 10px;
+    right: 10px;
+    display: flex;
+    height: 60px;
+    width: 60px;
+    justify-content: center;
+    align-items: center;
+    z-index: 90;
+    background-color: #000080;
+}
+.menu-btn span,
+.menu-btn span:before,
+.menu-btn span:after {
+    content: '';
+    display: block;
+    height: 3px;
+    width: 25px;
+    border-radius: 3px;
+    background-color: #ffffff;
+    position: absolute;
+}
+.menu-btn span:before {
+    bottom: 8px;
+}
+.menu-btn span:after {
+    top: 8px;
+}
+
+
+
+#menu-btn-check:checked ~ .menu-btn span {
+    background-color: rgba(255, 255, 255, 0);/*メニューオープン時は真ん中の線を透明にする*/
+}
+#menu-btn-check:checked ~ .menu-btn span::before {
+    bottom: 0;
+    transform: rotate(45deg);
+}
+#menu-btn-check:checked ~ .menu-btn span::after {
+    top: 0;
+    transform: rotate(-45deg);
+}
+
+
+#menu-btn-check {
+    display: none;
+}
+
+
+#menu-btn-check {
+    display: none;
+}
+
+
+
+
+.menu-content {
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 80;
+    background-color:#3584bb;
+}
+.menu-content ul {
+    padding: 70px 10px 0;
+}
+.menu-content ul li {
+    border-bottom: solid 1px #ffffff;
+    list-style: none;
+}
+.menu-content ul li a {
+    display: block;
+    width: 100%;
+    font-size: 15px;
+    box-sizing: border-box;
+    color:white;
+    text-decoration: none;
+    padding: 9px 15px 10px 0;
+    position: relative;
+    opacity:1;
+    transition:0.4s;
+    font-weight:600;
+}
+
+.menu-content ul li a:hover{
+    color:#000080;
+}
+
+
+
+.menu-content ul li a::before {
+    content: "";
+    width: 7px;
+    height: 7px;
+    border-top: solid 2px #ffffff;
+    border-right: solid 2px #ffffff;
+    transform: rotate(45deg);
+    position: absolute;
+    right: 11px;
+    top: 16px;
+}
+
+
+.menu-content {
+    width: 100%;
+    height: 35%;
+    position: fixed;
+    top: 0;
+    left: 100%;
+    z-index: 80;
+    background-color: #3584bb;
+    transition: all 0.5s;
+    opacity:0.8;
+}
+
+
+#menu-btn-check:checked ~ .menu-content {
+    left: 0;
+}
+
+#menu-btn-check:checked ~ .menu-content {
+    left: 0;
+}
+
+
+
 .form{
   display:block;
   width:100%;
@@ -236,10 +383,6 @@ transform:translateX(-110%);
 transition:0.2s;
 }
 
-.header{
-width:100%;
-display:block;
-}
 
 .header-menu{
 width:100%;
@@ -263,5 +406,11 @@ transform:scale(10);
 top:0.1;
 opacity:0;
 }
+
+
+.login-container .login-input{
+background-color:white;
+}
+
 
 }
