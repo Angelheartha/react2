@@ -15,6 +15,8 @@ import { Nav }  from '../components/Nav';
 import { Alert } from '../components/Alert';
 import Head from 'next/head';
 
+
+
 export const LoginStatusContext = createContext();
 
 
@@ -35,11 +37,19 @@ export function MyApp ({ Component, pageProps }) {
  const [inputt, setInputt]=useState("");
  const [textareaa, setTextareaa]=useState("");
 
+     const router = useRouter();
  //const [loggedInStatus, setLoggedInStatus]=useState("未ログイン");
+
+
+const handleSuccessfulAuthentication = () =>{
+        router.replace("/login");
+
+   }
 
 
  const handleLogout = () => {
     setLoggedInStatus("未ログイン")
+    handleSuccessfulAuthentication()
     //setUser({})
   }
 

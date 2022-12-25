@@ -9,7 +9,6 @@ import Modal from "../components/Modal";
 import Act from ".//Act"
 import axios from "axios";
 //import { useAlert } from 'react-alert'
-
 import { useRouter } from 'next/router'
 import {LoginStatusContext} from '../pages/_app';
 
@@ -43,6 +42,9 @@ const Dashboard = (props) => {
   const {username, setUsername} = useContext(LoginStatusContext);
   //const {text,setTextarea} = useContext(LoginStatusContext);
   //const {input,setInput} = useContext(LoginStatusContext);
+  const router = useRouter();
+
+
 
 
     const [options, setOptions] = useState({
@@ -55,6 +57,7 @@ const Dashboard = (props) => {
         const { name, checked } = e.target;
         setOptions(options => ({ ...options, [name]: checked }));
     }
+
 
 
 
