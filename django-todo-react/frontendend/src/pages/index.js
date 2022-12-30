@@ -23,10 +23,14 @@ const handleLogin = () =>{
 
 const handleLogoutClick = () => {
                 handleLogout()
+                router.replace("/login")
     };
 
 
+ const handleSuccessfulAuthenticationn = () =>{
+        router.replace("/login");
 
+   }
 
   return(
   <div>

@@ -33,8 +33,8 @@ export function MyApp ({ Component, pageProps }) {
  const [isModalOpen, setIsModalOpen] = useState(false);
  const [description,setDescription] = useState("");
  // const alert = useAlert()//
- const [input, setInput]=useState("");
- const [textarea, setTextarea]=useState("");
+ const [inputt, setInputt]=useState("");
+ const [textareaa, setTextareaa]=useState("");
  const[email, setEmail] = useState("")
  const[password, setPassword] = useState("")
  const[username, setUsername] = useState("")
@@ -68,7 +68,7 @@ export function MyApp ({ Component, pageProps }) {
           <h1 className="message">ようこそ！！</h1>
 
       <LoginStatusContext.Provider
-       value={{loggedInStatus,setLoggedInStatus,handleLogin,email,setEmail,username,setUsername,password,setPassword,handleLogout,selectedFile,setSelectedFile,isFilePicked,setIsFilePicked}}>
+       value={{inputt, setInputt, textareaa, setTextareaa ,loggedInStatus,setLoggedInStatus,handleLogin,email,setEmail,username,setUsername,password,setPassword,handleLogout,selectedFile,setSelectedFile,isFilePicked,setIsFilePicked}}>
           <Component {...pageProps} />
       </LoginStatusContext.Provider>
      </div>

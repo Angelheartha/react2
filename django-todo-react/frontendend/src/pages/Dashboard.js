@@ -37,13 +37,17 @@ const Dashboard = (props) => {
   const {loggedInStatus, setLoggedInStatus } = useContext(LoginStatusContext);
  // const{checkLoginStatus} = useContext(LoginStatusContext);
  //  const id = setTimeout;
-  const {handleLogout} =useContext(LoginStatusContext);
+  //const {handleLogout} =useContext(LoginStatusContext);
   const {username, setUsername} = useContext(LoginStatusContext);
   //const {text,setTextarea} = useContext(LoginStatusContext);
   //const {input,setInput} = useContext(LoginStatusContext);
   const router = useRouter();
 
-
+   const handleLogout = () => {
+    setLoggedInStatus("未ログイン")
+     router.replace("/login")
+    //setUser({})
+  }
 
 
     const [options, setOptions] = useState({
@@ -84,7 +88,6 @@ const checkLoginStatus = () => {
         if(objj === null){
         }else{
          axios.post("http://52.196.20.77:8000/cores/token/refresh/" ,{
-                           username:objj.username,
                               email:objj.email,
                            password:objj.password,
             },
@@ -92,10 +95,18 @@ const checkLoginStatus = () => {
    ).then(response =>{
         if (response.data.refresh　&& loggedInStatus === "未ログイン") {
          // handleLogin(objj.username)
-         setLoggedInStatus(objj.username+"さん");
+         console.log('ww1')
+         setLoggedInStatus("ログインなう");
         }else if (!response.data.refresh　&& loggedInStatus === "ログインなう") {
-          setLoggedInStatus("未ログイン");
-
+          setLoggedInStatus("ログインなう");
+         // console.log("yeath");
+          console.log("loloo");
+          //setUser({})
+        }else if (!response.data.refresh　&& loggedInStatus === "未ログイン") {
+          setLoggedInStatus("ログインなう");
+         // console.log("yeath");
+          console.log("loloo");
+          //setUser({})
         }
       })
       .catch(error => {
