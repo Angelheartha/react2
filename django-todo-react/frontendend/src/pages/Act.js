@@ -37,9 +37,9 @@ const aalert = () => {
       <div>
         <form className="formtext" onSubmit={()=>{handleSubmit()}} >
           <p>E-mail</p>
-          <input name="email" value={inputt} onChange={(e) => setInputt(e.target.value)}/>
+          <input className="input" name="email" value={inputt} onChange={(e) => setInputt(e.target.value)}/>
           <p>Message</p>
-          <textarea name="email" value={textareaa} onChange={(e) => setTextareaa(e.target.value)}/>
+          <textarea className="textarea" name="email" value={textareaa} onChange={(e) => setTextareaa(e.target.value)}/>
           <p>I am available at this moment!</p>
         <button onClick={props.onClick}>Close</button>
         <button type="button" onClick={aalert }>

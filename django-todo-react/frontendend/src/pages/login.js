@@ -19,16 +19,12 @@ export default function Login() {
      const {email, setEmail } = useContext(LoginStatusContext);
      const {loggedInStatus, setLoggedInStatus } = useContext(LoginStatusContext);
      const router = useRouter();
-   //  const {local } = useContext(LoginStatusContext);
+     const { handleLogin} = useContext(LoginStatusContext);
      //const local = local();
 
-  const handleLogin = () =>{
-  setLoggedInStatus("ログインなう");
-  }
 
 
   const handleSuccessfulAuthentication = () =>{
-
         router.replace("/Dashboard");
 
    }
@@ -41,7 +37,6 @@ var array = []
 var crazy =  []
 
 var obj = {
-  'username': username,
   'email': email,
   'password':password
 };
@@ -74,21 +69,16 @@ const psss = (data) =>{
 
 
     const handleSubmit = (event) => {
-     console.log("a")
                 axios.post("http://52.196.20.77:8000/cores/token/obtain/",
             {
-                    username: username,
                     email: email,
-                    password: password
-
+                    password: password,
             },
             { withCredentials: true }
         ).then(response => {
-
-            setLoggedInStatus(username+"さん")//
-            //console.log(response)//
             console.log(response)
             if (response.statusText === "OK") {
+                 handleLogin();
                  handleSuccessfulAuthentication(response.data);
                  local()
             }
@@ -103,34 +93,62 @@ const psss = (data) =>{
     return (
         <div>
             {/* ログインに変更 */}
-            <h1>Login</h1>
 
             {/* フォーム内のpassword_confrmation入力フィールド削除 */}
             <form className="form" onSubmit={handleSubmit}>
-            <div className="login-container" >
-                <input className="login-input"
+            <div className="ke-tai">
+            <div className="divdivdiv3">
+            <p>メールアドレス:</p>
+              <input
                     type="email"
                     name="email"
                     placeholder="E-mail"
                     value={email}
                     onChange={event=>setEmail(event.target.value)}
                 />
-                <input className="login-input"
+            </div>
+            <div className="divdivdiv3">
+            <p>パスワード:</p>
+            <input
                     type="password"
                     name="password"
                     placeholder="Password"
                     value={password}
                     onChange={event=>setPassword(event.target.value)}
                 />
-                <input className="login-input"
-                    type="username"
-                    name="username"
-                    placeholder="Username"
-                    value={username}
-                    onChange={event=>setUsername(event.target.value)}
-                />
             </div>
-                <button className="button"  type="submit">Login</button>
+            </div>
+
+                <table className="tableform" border="1">
+                <tbody>
+                <tr>
+                <td>メールアドレス:</td><td>
+                <input
+                    type="email"
+                    name="email"
+                    placeholder="E-mail"
+                    value={email}
+                    onChange={event=>setEmail(event.target.value)}
+                /></td>
+                </tr>
+
+                <tr>
+                <td>パスワード:</td><td>
+                <input
+                    type="password"
+                    name="password"
+                    placeholder="Password"
+                    value={password}
+                    onChange={event=>setPassword(event.target.value)}
+                /></td>
+                </tr>
+                </tbody>
+                </table>
+
+
+
+
+                <button className="button" type="submit">Login</button>
             </form>
         </div>
     )

@@ -1,4 +1,7 @@
-import '/src/styles/globals.css';
+import '../styles/globals.css';
+//import '/src/styles/style.css';
+//import '/src/styles/App.css';
+//import '/src/styles/index.css';
 import 'bootstrap/dist/css/bootstrap.css';
 import {
   BrowserRouter as Router,
@@ -7,13 +10,12 @@ import {
   useRoutes,
 } from "react-router-dom";
 import Navbar from "../components/navbar";
+//import { BrowserRouter} from 'react-router-dom';
 import React , {useContext, useState, createContext, useEffect} from 'react';
+//import React , {useState, createContext} from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/router'
 import axios from 'axios';
-import { Nav }  from '../components/Nav';
-import { Alert } from '../components/Alert';
-import Head from 'next/head';
 
 
 
@@ -31,48 +33,42 @@ export function MyApp ({ Component, pageProps }) {
  const [isModalOpen, setIsModalOpen] = useState(false);
  const [description,setDescription] = useState("");
  // const alert = useAlert()//
+ const [input, setInput]=useState("");
+ const [textarea, setTextarea]=useState("");
  const[email, setEmail] = useState("")
  const[password, setPassword] = useState("")
  const[username, setUsername] = useState("")
- const [inputt, setInputt]=useState("");
- const [textareaa, setTextareaa]=useState("");
+ const [selectedFile, setSelectedFile] = useState(false);
+ const [isFilePicked, setIsFilePicked] = useState();
 
-     const router = useRouter();
  //const [loggedInStatus, setLoggedInStatus]=useState("未ログイン");
 
 
-const handleSuccessfulAuthentication = () =>{
-        router.replace("/login");
-
-   }
 
 
  const handleLogout = () => {
     setLoggedInStatus("未ログイン")
-    handleSuccessfulAuthentication()
     //setUser({})
   }
 
 
 
+  const handleLogin = () =>{
+  setLoggedInStatus("ログインなう");
+  console.log('ww2')
+  }
+
+
 
 
   return (
-
-
     <div id="root">
-
-        <Head>
-                <title>Next.js - Alert (Toaster) Notifications</title>
-                <link href="//netdna.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet" />
-        </Head>
-
      <Navbar />
      <div className="golinks">
-          <h1 className="message">ようこそ!!</h1>
+          <h1 className="message">ようこそ！！</h1>
 
       <LoginStatusContext.Provider
-       value={{loggedInStatus,setLoggedInStatus,email,setEmail,username,setUsername,password,setPassword,handleLogout,inputt,setInputt,textareaa,setTextareaa}}>          <Alert />
+       value={{loggedInStatus,setLoggedInStatus,handleLogin,email,setEmail,username,setUsername,password,setPassword,handleLogout,selectedFile,setSelectedFile,isFilePicked,setIsFilePicked}}>
           <Component {...pageProps} />
       </LoginStatusContext.Provider>
      </div>
@@ -84,4 +80,3 @@ const handleSuccessfulAuthentication = () =>{
 export default MyApp
 
 
-//

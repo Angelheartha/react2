@@ -14,7 +14,7 @@ import Modal from "../components/Modal";
 //import { useAlert } from 'react-alert'
 import {LoginStatusContext} from '../pages/_app';
 
-import { alertService } from '../components/alert.Service.js';
+//import { alertService } from '../components/alert.Service.js';
 
 
 const Navbar = () => {
@@ -374,8 +374,8 @@ const Act = (props) => {
                     </Link>
                 </li>
                 <li>
-                     <Link legacyBehavior href="/Dashboard/" >
-                       <a>Dashboard</a>
+                     <Link className="nav-linkk d-none" legacyBehavior href="/Dashboard/" >
+                       <a className="nav-linkk d-none">Dashboard</a>
                     </Link>
                 </li>
             </ul>
@@ -409,7 +409,7 @@ const Act = (props) => {
 
 
                     <Link legacyBehavior href="/Dashboard/" className="nav-linkk" >
-                       <a className="jcc nav-linkk">Dashboard</a>
+                       <a className="jcc nav-linkk d-none ">Dashboard</a>
                     </Link>
 
                  </nav>

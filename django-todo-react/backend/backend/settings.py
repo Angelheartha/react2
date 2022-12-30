@@ -188,3 +188,7 @@ SECURE_CROSS_ORIGIN_OPENER_POLICY = None
 SESSION_COOKIE_SECURE = False
 
 # Access_Control_Allow_Origin = 'http://52.196.20.77:8000'
+
+
+MEDEA_URL = "/media/"
+MEDIA_ROOT = str(BASE_DIR / "media")
